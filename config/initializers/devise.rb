@@ -302,7 +302,7 @@ Devise.setup do |config|
   # ActiveSupport.on_load(:devise_failure_app) do
   #   include Turbolinks::Controller
   # end
-
+config.navigational_formats = ['*/*', :html, :turbo_stream]
   # ==> Configuration for :registerable
 
   # When set to false, does not sign a user in automatically after their password is
