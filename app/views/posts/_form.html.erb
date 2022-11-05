@@ -17,12 +17,8 @@
   </div>
 
   <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.text_field :image %>
-  </div>
-
-  <div>
-    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.label :featured_image, style: "display: block" %>
+    <%= form.file_field :featured_image %>
   </div>
 
   <div>

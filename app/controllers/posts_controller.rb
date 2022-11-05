@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.save
@@ -50,6 +51,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
+    Comment.destroy_by(post_id: @post.id)
 
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
@@ -65,6 +67,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :image, :user_id)
+      params.require(:post).permit(:title, :image, :user_id, :featured_image)
     end
 end
