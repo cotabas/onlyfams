@@ -1,17 +1,16 @@
 <div id="<%= dom_id comment %>">
   <p>
+    <%= comment.created_at %>
+  </p>
+  <p>
     <strong>Body:</strong>
     <%= comment.body %>
   </p>
 
   <p>
     <strong>User:</strong>
-    <%= comment.user_id %>
+    <%= User.find_by(id: comment.user_id).name %>
   </p>
 
-  <p>
-    <strong>Post:</strong>
-    <%= comment.post_id %>
-  </p>
 
 </div>
