@@ -11,17 +11,20 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="mb-3">
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
 
-  <div>
-    <%= form.label :featured_image, style: "display: block" %>
-    <%= form.file_field :featured_image %>
+  <div class="mb-3 file_droparea">
+    <% if post.featured_image.attached? %>
+      <%= post.featured_image.blob.filename %>
+    <% else %>
+        <p class="file_msg">Drag here to upload or click here to browse</p>
+        <%= form.file_field :featured_image, class: "file_input", direct_upload: true %>
+    <% end %>   
   </div>
-
-  <div>
+  <div class="mb-3">
     <%= form.submit %>
   </div>
 <% end %>
