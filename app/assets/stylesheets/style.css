@@ -1,24 +1,54 @@
 body {
-  background-color: #cbd5e1;
+  background-color: #f1f5f9;
 }
 
 
-.custom-shape-divider-bottom-1668139904 .shape-fill {
-  fill: #cbd5e1;
-}
 
-.custom-shape-divider-bottom-1668139904 {
+
+
+
+/* Curve Stuff */
+
+.custom-shape-divider-bottom-menu {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
+  transform: rotate(180deg);
 }
 
-.custom-shape-divider-bottom-1668139904 svg {
+.custom-shape-divider-bottom-menu svg {
+  position: relative;
+  display: block;
+  width: calc(186% + 1.3px);
+  height: 174px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-menu .shape-fill {
+  fill: #F1F5F9;
+}
+
+.custom-shape-divider-top-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: -1;
+}
+
+.custom-shape-divider-top-navbar svg {
   position: relative;
   display: block;
   width: calc(100% + 1.3px);
-  height: 100px;
+  height: 114px;
+  z-index: -1;
+}
+
+.custom-shape-divider-top-navbar .shape-fill {
+  fill: #212529;
 }
