@@ -2,3 +2,4 @@
 //= link_tree ../builds
 //= require activestorage
 //= require drag_drop
+//= link style.css

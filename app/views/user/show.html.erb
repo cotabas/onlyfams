@@ -1,3 +1,8 @@
+<%= link_to "&#9881".html_safe, edit_user_registration_url(@user) %>
+
 <% Post.where(user_id: @user.id).each do |post| %>
   <%= render post %>
 <% end %>
+
+<%= @user.inspect %>
+

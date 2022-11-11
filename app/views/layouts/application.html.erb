@@ -8,11 +8,12 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-
+    
     <%= javascript_include_tag "drag_drop", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
+    <%= render "layouts/navbar" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>  
     <%= yield %>
