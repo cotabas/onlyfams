@@ -2,13 +2,8 @@
 
 <h1>Posts</h1>
 
-<div id="posts">
+<div class="img_container d-flex justify-content-center">
   <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+    <div class="img_back"><%= link_to image_tag(post.featured_image), post, class: "img_back" %></div>
   <% end %>
 </div>
-
-<%= link_to "New post", new_post_path %>

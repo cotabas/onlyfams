@@ -97,6 +97,7 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.11.0)
+    fastimage (2.2.6)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -225,6 +226,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise
+  fastimage
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
