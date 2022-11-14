@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   }
 
   get '/user/:id', to: 'user#show'
+  get '/posts/modal/:id', to: 'posts#modal'
 end

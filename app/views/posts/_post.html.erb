@@ -11,7 +11,7 @@
 
   <p>
     <strong>User:</strong>
-    <%= User.find_by(id: post.user_id).name %>
+    <%= @username %>
   </p>
 
   <%= post.created_at %>

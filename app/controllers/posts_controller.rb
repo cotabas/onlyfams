@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
-
+  before_action :set_post, only: %i[ show modal edit update destroy ]
+  # protect_from_forgery except: :show
   # GET /posts or /posts.json
   def index
     @posts = Post.all
@@ -8,6 +8,11 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @username = User.find_by(id: @post.user_id).name
+  end
+
+  def modal
+    @username = User.find_by(id: @post.user_id).name
   end
 
   # GET /posts/new

@@ -1,9 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Posts</h1>
+<br />
+<br />
+<br />
+<%= turbo_frame_tag "main_image" do %>
+        <% end %>
+
 
 <div class="img_container d-flex justify-content-center">
   <% @posts.each do |post| %>
-    <div class="img_back"><%= link_to image_tag(post.featured_image), post, class: "img_back" %></div>
+    <a href="<%= "posts/modal/#{post.id}" %>" data-turbo-frame="main_image">
+      <div class="img_back" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <%= image_tag(post.featured_image) %>   
+      </div>
+    </a>
   <% end %>
 </div>
+ 
+
+
+
