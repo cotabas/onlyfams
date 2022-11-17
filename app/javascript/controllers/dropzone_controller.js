@@ -5,15 +5,14 @@ import Dropzone from "dropzone"
 import { getMetaValue, findElement, removeElement, insertAfter } from "../helpers/dropzone"
 
 
-// Connects to data-controller="dropzone"
-Dropzone.autoDiscover = false
+
 
 export default class extends Controller {
   static targets = [ "input" ]
 
   connect() {
-
-    console.log("also here?");
+    Dropzone.autoDiscover = false
+    console.log("dropzone go!")
     this.dropZone = createDropZone(this)
     this.hideFileInput()
     this.bindEvents()

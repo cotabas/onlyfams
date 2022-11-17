@@ -16,10 +16,20 @@
     <%= form.text_field :title %>
   </div>
 
+ <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-accepted-files="image/*">
+   <%= form.file_field :featured_image, direct_upload: true, data: { dropzone_target: 'input' } %>
+   <div class="dropzone-msg dz-message needsclick">
+     <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
+     <span class="dropzone-msg-desc">One picture at a time 5 mb max size</span>
+   </div>
+</div>
+
+<!--
   <div class="mb-3 file_droparea" id="droparea">
         <p class="file_msg">Drag here to upload or click here to browse</p>
         <%= form.file_field :featured_image, class: "file_input", id: "file_input", direct_upload: true %>
   </div>
+  -->
   <div class="mb-3">
     <%= form.submit %>
   </div>
