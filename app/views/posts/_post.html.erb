@@ -7,12 +7,19 @@
   <p>
     <strong>Image:</strong>
     <turbo-frame id="main_image">
-      <%= image_tag(post.featured_image) %>
-      <%= post.title %><strong> By </strong><%= @username %> <strong>At:</strong>
-      <%= post.created_at %>
-      <% unless post.created_at.to_i == post.updated_at.to_i %>
+    <%= image_tag(post.featured_image) %>
+      <% if post.created_at.to_i == post.updated_at.to_i %>
+        <%= post.title %> - 
+        <strong> <%= @username %> </strong> <%= @time_since_created %> ago
+      <% else %>
         <%= "Edited: #{post.updated_at}" %>
       <% end %>
+        <% post.comments.each do |comment| %>
+          <br />
+          <strong><%= User.find(comment.user_id).name %></strong>
+          <br />
+          <%= comment.body %>
+        <% end %>
     </turbo-frame>
   </p>
 
