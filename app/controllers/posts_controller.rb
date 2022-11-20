@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
     @username = User.find_by(id: @post.user_id).name
-    @time_since_created = verbose_count(time_since(@post.created_at).map(&:to_i))[0]
+    @time_since_created = verbose_count(@post.created_at)[0]
   end
 
   def modal
@@ -77,10 +77,10 @@ class PostsController < ApplicationController
     end
 
     def verbose_count(time)
-      rtime = time.reverse
+      rtime = time_since(time).map(&:to_i).reverse
       sum_time = 0
       [[0, 'second'], [60, 'minute'], [60, 'hour'], [24, 'day'], [7, 'week'], [52, 'year']].reverse.map.with_index do |arr, dex|
-        next if rtime[dex] == 0
+        next if rtime[dex].zero?
         sum_time = (sum_time + rtime[dex]) * arr[0]
         rtime[dex + 1] -= sum_time unless arr[0] == 0
         "#{rtime[dex]} #{arr[1].pluralize(rtime[dex])}"
@@ -88,7 +88,7 @@ class PostsController < ApplicationController
     end
 
     def time_since(start)
-      sec = Time.now - start
+      sec = Time.current - start
       min = sec / 60
       hour = min / 60
       day = hour / 24
