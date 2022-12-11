@@ -14,12 +14,16 @@
       <% else %>
         <%= "Edited: #{post.updated_at}" %>
       <% end %>
+
+
+      <br /><h2>Comments: </h2>
         <% post.comments.each do |comment| %>
           <br />
           <strong><%= User.find(comment.user_id).name %></strong>
           <br />
           <%= comment.body %>
         <% end %>
+
     </turbo-frame>
   </p>
 
