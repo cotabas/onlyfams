@@ -1,12 +1,11 @@
 <p style="color: green"><%= notice %></p>
+<turbo-frame id="main_image">
+  <%= render @post %>
+  <%= render 'comments/form' %>
+  
+</turbo-frame>
 
-<%= render @post %>
-<br />
-<%= render @post.comments %>
-<br />
-<%= render 'comments/form' %>
 <div>
-
   <%= link_to "Edit this post", edit_post_path(@post) %> |
   <%= link_to "Back to posts", posts_path %>
 

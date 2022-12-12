@@ -8,7 +8,7 @@
 
 <div class="img_container container">
   <% @posts.each do |post| %>
-    <a href="<%= "#{post.id}" %>" data-turbo-frame="main_image">
+    <a href="<%= "posts/#{post.id}" %>" data-turbo-frame="main_image">
       <div class="img_back col col-md-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <%= image_tag(post.featured_image) %>   
       </div>
@@ -29,7 +29,6 @@
 
           <%= turbo_frame_tag "main_image" do %>
           <% end %>
-          
 
         </div>
         <div class="modal-footer">

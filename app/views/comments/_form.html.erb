@@ -1,16 +1,10 @@
 <%= form_with(model: [@post, @post.comments.build]) do |form| %>
 
   <div>
-    <%= form.label :body, style: "display: block" %>
+    <strong>Add a comment</strong>
     <%= form.text_field :body %>
-  </div>
 
-  <div>
     <%= form.hidden_field :user_id, value: current_user.id %>
-  </div>
-
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit 'Comment', class: 'btn btn-primary' %>
   </div>
 <% end %>

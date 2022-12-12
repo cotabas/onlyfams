@@ -1,12 +1,5 @@
 <div id="<%= dom_id post %>">
   <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
-
-  <p>
-    <strong>Image:</strong>
-    <turbo-frame id="main_image">
     <%= image_tag(post.featured_image) %>
       <% if post.created_at.to_i == post.updated_at.to_i %>
         <%= post.title %> - 
@@ -16,7 +9,7 @@
       <% end %>
 
 
-      <br /><h2>Comments: </h2>
+      <br /><strong>Comments: </strong>
         <% post.comments.each do |comment| %>
           <br />
           <strong><%= User.find(comment.user_id).name %></strong>
@@ -24,20 +17,8 @@
           <%= comment.body %>
         <% end %>
 
-    </turbo-frame>
   </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= @username %>
-  </p>
-
-  <%= post.created_at %>
-
-  <% unless post.created_at.to_i == post.updated_at.to_i %>
-
-    <%= "Edited: #{post.updated_at}" %>
-  <% end %>
 
   <br />
 </div>
