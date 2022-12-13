@@ -29,7 +29,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
@@ -67,34 +66,34 @@ class PostsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:title, :image, :user_id, :featured_image)
-    end
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:title, :image, :user_id, :featured_image)
+  end
 
-    def verbose_count(time)
-      rtime = time_since(time).map(&:to_i).reverse
-      sum_time = 0
-      [[0, 'second'], [60, 'minute'], [60, 'hour'], [24, 'day'], [7, 'week'], [52, 'year']].reverse.map.with_index do |arr, dex|
-        next if rtime[dex].zero?
-        sum_time = (sum_time + rtime[dex]) * arr[0]
-        rtime[dex + 1] -= sum_time unless arr[0] == 0
-        "#{rtime[dex]} #{arr[1].pluralize(rtime[dex])}"
-      end.compact
-    end
+  def verbose_count(time)
+    rtime = time_since(time).map(&:to_i).reverse
+    sum_time = 0
+    [[0, 'second'], [60, 'minute'], [60, 'hour'], [24, 'day'], [7, 'week'], [52, 'year']].reverse.map.with_index do |arr, dex|
+      next if rtime[dex].zero?
+      sum_time = (sum_time + rtime[dex]) * arr[0]
+      rtime[dex + 1] -= sum_time unless arr[0] == 0
+      "#{rtime[dex]} #{arr[1].pluralize(rtime[dex])}"
+    end.compact
+  end
 
-    def time_since(start)
-      sec = Time.current - start
-      min = sec / 60
-      hour = min / 60
-      day = hour / 24
-      week = day / 7
-      year = day / 365
-      [sec, min, hour, day, week, year]
-    end
+  def time_since(start)
+    sec = Time.current - start
+    min = sec / 60
+    hour = min / 60
+    day = hour / 24
+    week = day / 7
+    year = day / 365
+    [sec, min, hour, day, week, year]
+  end
 end
 

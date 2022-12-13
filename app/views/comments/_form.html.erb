@@ -2,7 +2,7 @@
 
   <div>
     <strong>Add a comment</strong>
-    <%= form.text_field :body %>
+    <%= form.text_field :body, :required => true %>
 
     <%= form.hidden_field :user_id, value: current_user.id %>
     <%= form.submit 'Comment', class: 'btn btn-primary' %>

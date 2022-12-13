@@ -1,8 +1,37 @@
-<%= link_to "&#9881".html_safe, edit_user_registration_url(@user) %>
-
-<% Post.where(user_id: @user.id).each do |post| %>
-  <%= render post %>
-<% end %>
-
+<br />
+<br />
+<%= link_to "&#9881".html_safe, edit_user_registration_url %>
 <%= @user.inspect %>
+
+<br />
+<br />
+<br />
+
+<div class="img_container container">
+  <% Post.where(user_id: @user.id).each do |post| %>
+    <a href="<%= "/posts/#{post.id}" %>" data-turbo-frame="main_image">
+      <div class="img_back col col-md-auto" data-bs-toggle="modal" data-bs-target="#modal">
+          <%= image_tag(post.featured_image) %>   
+      </div>
+    </a>
+  <% end %>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalLabel"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <%= turbo_frame_tag "main_image" do %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
