@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="mb-3">
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+  <br />
 
- <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-accepted-files="image/*">
-   <%= form.file_field :featured_image, direct_upload: true, data: { dropzone_target: 'input' } %>
+ <div class="dropzone dropzone-default dz-clickable" style="max-width: 700px" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-accepted-files="image/*">
+   <%= form.file_field :featured_image, direct_upload: true, data: { dropzone_target: 'input' }, :required => true %>
    <div class="dropzone-msg dz-message needsclick">
-     <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
+     <h5 class="dropzone-msg-title">Drag here to upload or click here to browse</h5>
      <span class="dropzone-msg-desc">One picture at a time 5 mb max size</span>
    </div>
 </div>
 
+<br />
 
   <div class="mb-3">
-    <%= form.submit %>
+    <%= form.text_field :title, style: 'width: 80%; max-width: 650px', :required => true %>
+
+    <%= form.submit 'Post', class: 'btn btn-primary' %>
   </div>
 <% end %>
 <img id="imageHole">
