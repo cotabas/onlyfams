@@ -1,3 +1,5 @@
+<br />
+<br />
 <div class="container">
 
   <h2>Edit <%= resource_name.to_s.humanize %></h2>
@@ -14,6 +16,9 @@
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
+
+    <%= f.file_field :avatar %>
+
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

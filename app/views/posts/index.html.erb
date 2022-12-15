@@ -9,6 +9,7 @@
 <div class="img_container container">
   <% @posts.each do |post| %>
     <a href="<%= "/posts/#{post.id}" %>" data-turbo-frame="main_image">
+      <%= post.inspect %>
       <div class="img_back col col-md-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <%= image_tag(post.featured_image) %>   
       </div>
