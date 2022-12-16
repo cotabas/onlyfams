@@ -3,6 +3,15 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+  <div class="dropzone dropzone-default dz-clickable" style="max-width: 200px" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-accepted-files="image/*">
+    <%= f.file_field :avatar, direct_upload: true, data: { dropzone_target: 'input' } %>
+    <div class="dropzone-msg dz-message needsclick">
+    <% if @user.avatar.attached? %>  
+      <%= image_tag @user.avatar, style: 'width: 70px; height: 70px;' %>
+    <% end %>
+    </div>
+  </div>
+
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
@@ -13,7 +22,7 @@
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
-  <%= f.file_field :avatar %>
+
 
 
   <div class="field">

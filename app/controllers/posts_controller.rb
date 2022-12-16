@@ -8,12 +8,12 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    @username = User.find_by(id: @post.user_id).name
+    @user = User.find_by(id: @post.user_id)
     @time_since_created = verbose_count(@post.created_at)[0]
   end
 
   def modal
-    @username = User.find_by(id: @post.user_id).name
+    @user = User.find_by(id: @post.user_id)
   end
 
   # GET /posts/new

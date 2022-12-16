@@ -3,7 +3,10 @@
     <%= image_tag(post.featured_image) %>
       <% if post.created_at.to_i == post.updated_at.to_i %>
         <%= post.title %> - 
-        <strong> <%= @username %> </strong> <%= @time_since_created %> ago
+        <% if @user.avatar.attached? %>  
+          <%= image_tag @user.avatar, style: 'width: 30px; height: 30px;' %>
+        <% end %>
+        <strong> <%= @user.name %> </strong> <%= @time_since_created %> ago
       <% else %>
         <%= "Edited: #{post.updated_at}" %>
       <% end %>

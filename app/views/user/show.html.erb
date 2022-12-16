@@ -2,8 +2,10 @@
 <br />
 <%= link_to "&#9881".html_safe, edit_user_registration_url %>
 <%= @user.inspect %>
-<%= image_tag(@user.avatar) %>
 
+<% if @user.avatar.attached? %>  
+  <%= image_tag @user.avatar, style: 'width: 70px; height: 70px;' %>
+<% end %>
 <br />
 <br />
 <br />
