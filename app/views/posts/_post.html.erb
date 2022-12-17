@@ -1,8 +1,9 @@
 <div id="<%= dom_id post %>">
-  <p>
+  <p class="modal_container">
     <%= image_tag(post.featured_image) %>
+
+    <p style="margin-top: 5px">
       <% if post.created_at.to_i == post.updated_at.to_i %>
-        <%= post.title %> - 
         <% if @user.avatar.attached? %>  
           <%= image_tag @user.avatar, style: 'width: 30px; height: 30px;' %>
         <% end %>
@@ -10,16 +11,25 @@
       <% else %>
         <%= "Edited: #{post.updated_at}" %>
       <% end %>
+    </p>
+      <p style="padding-left: 35px"><%= post.title %></p>
+      <hr>
 
+      <strong style="font-size: 1.25rem">Comments: </strong>
+      <% post.comments.each do |comment| %>
+        <p class="comment_container">
 
-      <br /><strong>Comments: </strong>
-        <% post.comments.each do |comment| %>
           <br />
+          <% if User.find(comment.user_id).avatar.attached? %>  
+          <%= image_tag User.find(comment.user_id).avatar, style: 'width: 30px; height: 30px; grid-column: 1;' %>
+          <% end %>
           <strong><%= User.find(comment.user_id).name %></strong>
           <br />
-          <%= comment.body %>
-        <% end %>
-
+  
+          <p style="padding-left: 35px"><%= comment.body %></p>
+        </p>
+        
+      <% end %>
   </p>
 
 

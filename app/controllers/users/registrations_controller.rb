@@ -1,17 +1,23 @@
 # frozen_string_literal: true
+# I think its this one...
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-   def new
-     super
-   end
+  #  def new
+  #    super
+  #  end
 
   # POST /resource
    def create
+    @user = User.find_by(params[id])
+    @user.avatar = "profile_placeholder" unless @user.avatar.attached?
+
      super
+
+
    end
 
   # GET /resource/edit
@@ -20,9 +26,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-   def update
-     super
-   end
+  #  def update
+  #    super
+  #  end
 
   # DELETE /resource
   # def destroy

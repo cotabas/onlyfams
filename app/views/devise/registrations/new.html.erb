@@ -1,46 +1,52 @@
-<h2>Sign up</h2>
+<br />
+<br />
+<div class="container">
+  <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="dropzone dropzone-default dz-clickable" style="max-width: 200px" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-accepted-files="image/*">
-    <%= f.file_field :avatar, direct_upload: true, data: { dropzone_target: 'input' } %>
-    <div class="dropzone-msg dz-message needsclick">
-    <% if @user.avatar.attached? %>  
-      <%= image_tag @user.avatar, style: 'width: 70px; height: 70px;' %>
-    <% end %>
+    <div class="dropzone dropzone-default dz-clickable" style="max-width: 200px" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-accepted-files="image/*">
+      <%= f.file_field :avatar, direct_upload: true, data: { dropzone_target: 'input' } %>
+      <div class="dropzone-msg dz-message needsclick">
+      <% if @user.avatar.attached? %>  
+        <%= image_tag @user.avatar, style: 'width: 70px; height: 70px;' %>
+      <% else %>
+        <%= image_tag "profile_placeholder.png" %>
+      <% end %>
+      </div>
     </div>
-  </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autocomplete: "email" %>
+    </div>
 
 
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>
