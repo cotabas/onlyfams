@@ -4,9 +4,8 @@
 
     <p style="margin-top: 5px">
       <% if post.created_at.to_i == post.updated_at.to_i %>
-        <% if @user.avatar.attached? %>  
-          <%= image_tag @user.avatar, style: 'width: 30px; height: 30px;' %>
-        <% end %>
+          <%= avatar_tag @user.id, style: 'width: 30px; height: 30px;' %>
+
         <strong> <%= @user.name %> </strong> <%= @time_since_created %> ago
       <% else %>
         <%= "Edited: #{post.updated_at}" %>
@@ -20,9 +19,8 @@
         <p class="comment_container">
 
           <br />
-          <% if User.find(comment.user_id).avatar.attached? %>  
-          <%= image_tag User.find(comment.user_id).avatar, style: 'width: 30px; height: 30px; grid-column: 1;' %>
-          <% end %>
+          <%= avatar_tag comment.user_id, style: 'width: 30px; height: 30px; grid-column: 1;' %>
+
           <strong><%= User.find(comment.user_id).name %></strong>
           <br />
   

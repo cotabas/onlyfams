@@ -2,19 +2,19 @@
 <br />
 <div class="container">
 
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+  <h2><%= current_user.name %>'s Profile</h2>
+  <br />
 
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="dropzone dropzone-default dz-clickable" style="max-width: 200px" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-accepted-files="image/*">
+    <div class="dropzone dropzone-default dz-clickable" style="max-width: 200px; min-height: 100px; border: none; padding: 0;" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-accepted-files="image/*">
       <%= f.file_field :avatar, direct_upload: true, data: { dropzone_target: 'input' } %>
-      <div class="dropzone-msg dz-message needsclick">
-      <% if @user.avatar.attached? %>  
-        <%= image_tag @user.avatar, style: 'width: 70px; height: 70px;' %>
-      <% end %>
+      <div class="dropzone-msg dz-message needsclick" style="margin: 5px">
+        <%= avatar_tag @user.id, style: 'width: 70px; height: 70px;' %>
+        <br />
+        <i>click to upload image</i>
       </div>
     </div>
 
@@ -56,13 +56,12 @@
     </div>
 
     <div class="actions">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
-
+      <%= f.label :current_password %> <i>(enter your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", style: "margin-right: 10px; margin-top: 2px;" %>
+      <br />
       <%= f.submit "Update", class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <%= link_to "Back", :back %>
 </div>
 

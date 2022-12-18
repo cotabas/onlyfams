@@ -11,14 +11,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #  end
 
   # POST /resource
-   def create
-    @user = User.find_by(params[id])
-    @user.avatar = "profile_placeholder" unless @user.avatar.attached?
-
-     super
-
-
-   end
+  #  def create
+  #    super
+  #  end
 
   # GET /resource/edit
   # def edit
