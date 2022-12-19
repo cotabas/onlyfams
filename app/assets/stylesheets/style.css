@@ -40,6 +40,18 @@ label {
   padding-left: 10px;
   padding-top: 10px;
 }
+.user_container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.setting_wheel {
+  text-decoration: none;
+}
+.setting_wheel:hover {
+  opacity: 70%;
+}
 p {
   margin-bottom: 0;
 }

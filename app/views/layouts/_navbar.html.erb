@@ -26,7 +26,6 @@
             <%= link_to 'Sign in', new_user_session_path, class: "nav-link" %>
           <% else %>
               <%= link_to User.find(current_user.id).name, "/user/#{current_user.id}", class: "nav-link" %>
-              <%= link_to 'User Settings', edit_user_registration_url, class: 'nav-link' %>
               <%= link_to 'Sign out', destroy_user_session_path, class: "nav-link" %>
           <% end %>
         </div>
@@ -43,6 +42,10 @@
           <li class="nav-item">
             <%= link_to "Post a new photo", new_post_path, class: "nav-link" %>
           </li>
+          <li class="nav-item">
+            <%= link_to 'All photos', 'posts', class: "nav-link" %>
+          </li>
+          
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               The Fam
@@ -56,15 +59,15 @@
               <% end %>
             </ul>
           </li>
+  
+          <li class="nav-item">
+            <a href="/" class="nav-link">Problems/Suggestions</a>
+          </li>
         </ul>
         <span class="navbar-text">
-
         </span>
 
-        <form class="d-flex mt-3" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        
       </div>
     </div>
   </div>

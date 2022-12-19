@@ -6,14 +6,13 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="dropzone dropzone-default dz-clickable" style="max-width: 200px" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-accepted-files="image/*">
+
+    <div class="dropzone dropzone-default dz-clickable" style="max-width: 200px; min-height: 100px; border: none; padding: 0;" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-accepted-files="image/*">
       <%= f.file_field :avatar, direct_upload: true, data: { dropzone_target: 'input' } %>
-      <div class="dropzone-msg dz-message needsclick">
-      <% if @user.avatar.attached? %>  
-        <%= image_tag @user.avatar, style: 'width: 70px; height: 70px;' %>
-      <% else %>
-        <%= image_tag "profile_placeholder.png" %>
-      <% end %>
+      <div class="dropzone-msg dz-message needsclick" style="margin: 5px">
+        <%= image_tag "profile_placeholder.png", style: 'width: 70px; height: 70px;' %>
+        <br />
+        <i>click to upload image</i>
       </div>
     </div>
 
@@ -44,9 +43,8 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up", class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
 </div>
