@@ -6,6 +6,7 @@
       </svg>
   </div>
 
+<% if user_signed_in? %>
   <div class="container-fluid">
     <!-- <a class="navbar-brand" href="#">Only family</a> -->
     <br />
@@ -59,9 +60,8 @@
               <% end %>
             </ul>
           </li>
-  
           <li class="nav-item">
-            <a href="/" class="nav-link">Problems/Suggestions</a>
+            <a href="/contact" class="nav-link">Problems/Suggestions</a>
           </li>
         </ul>
         <span class="navbar-text">
@@ -71,4 +71,6 @@
       </div>
     </div>
   </div>
+
+  <% end %>
 </nav>

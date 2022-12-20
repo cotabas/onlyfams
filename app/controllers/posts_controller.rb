@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show modal edit update destroy ]
+  
   # protect_from_forgery except: :show
   # GET /posts or /posts.json
   def index
