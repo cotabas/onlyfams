@@ -52,6 +52,13 @@ label {
 .setting_wheel:hover {
   opacity: 70%;
 }
+.user_link {
+  text-decoration: none;
+  color: #000;
+}
+.user_link:hover {
+  opacity: 70%;
+}
 p {
   margin-bottom: 0;
 }

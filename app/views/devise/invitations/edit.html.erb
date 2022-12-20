@@ -1,0 +1,46 @@
+<br />
+<br />
+<div class="container">
+  <h2>Create your account</h2>
+  <i>(You can change all this later)</i>
+  <br />
+  <br />
+  <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :invitation_token, readonly: true %>
+
+    <div class="dropzone dropzone-default dz-clickable" style="max-width: 200px; min-height: 100px; border: none; padding: 0;" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-accepted-files="image/*">
+        <%= f.file_field :avatar, direct_upload: true, data: { dropzone_target: 'input' } %>
+        <div class="dropzone-msg dz-message needsclick" style="margin: 5px">
+          <%= image_tag "profile_placeholder.png", style: 'width: 70px; height: 70px;' %>
+          <br />
+          <i>click to upload image</i>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+
+    <% if f.object.class.require_password_on_accepting %>
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <br />
+        <%= f.password_field :password %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit t("devise.invitations.edit.submit_button"), value: "Create account", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

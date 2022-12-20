@@ -1,21 +1,17 @@
-  
-<h1> Only Fams! </h1>
+<div class="container">
+  <br />
+  <br />
+  <h1> Only Fams! </h1>
 
-<% if current_user.nil? %>
-  <%= link_to 'Sign in', new_user_session_path %>
-  <br />
-  <br />
-<% else %>
-  <%= link_to User.find(current_user.id).name, "/user/#{current_user.id}" %>
-  <br />
-  <%= link_to 'Sign out', destroy_user_session_path %>
-<% end %>
+  <% if current_user.nil? %>
+    <%= link_to 'Sign in', new_user_session_path %>
+    <br />
+    <br />
+  <% else %>
+    <%= link_to User.find(current_user.id).name, "/user/#{current_user.id}" %>
+    <br />
+    <%= link_to 'Sign out', destroy_user_session_path %>
+  <% end %>
 
-<%= link_to 'Post', 'posts' %>
-<button type="button" 
-        class="btn btn-lg" 
-        data-bs-toggle="popover" 
-        title="Popover title" 
-        data-bs-content="Amazing content, right ?">
-  shh..
-</button>
+  <%= link_to 'Post', 'posts' %>
+</div>

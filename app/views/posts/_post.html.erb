@@ -6,7 +6,7 @@
       <% if post.created_at.to_i == post.updated_at.to_i %>
           <%= avatar_tag @user.id, style: 'width: 30px; height: 30px;' %>
 
-        <strong> <%= @user.name %> </strong> <%= @time_since_created %> ago
+        <strong><a href="/user/<%= @user.id %>" class="user_link" target="_parent"><%= @user.name %></a> </strong> <%= @time_since_created %> ago
       <% else %>
         <%= "Edited: #{post.updated_at}" %>
       <% end %>
@@ -21,7 +21,7 @@
           <br />
           <%= avatar_tag comment.user_id, style: 'width: 30px; height: 30px; grid-column: 1;' %>
 
-          <strong><%= User.find(comment.user_id).name %></strong>
+          <strong><a href="/user/<%= comment.user_id %>" class="user_link" target="_parent"><%= User.find(comment.user_id).name %></a></strong>
           <br />
   
           <p style="padding-left: 45px"><%= comment.body %></p>
