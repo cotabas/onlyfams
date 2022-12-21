@@ -1,5 +1,10 @@
+<div class="eyrie_face">
+  <%= image_tag "eyrie_face.jpg", width: "200px" %>
+</div>
 <div class="container">
   <h1> Welcome to Onlyfams.photos! </h1>
+
+  <br />
   <% unless current_user.nil? %>
   <br />
   <p>Hello <%= link_to User.find(current_user.id).name, "/user/#{current_user.id}", class: "user_link" %>,
