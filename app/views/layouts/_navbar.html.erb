@@ -53,10 +53,12 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-dark">
               <% User.all.each do |user| %>
-                <li style="display: flex">
-                  <a href="/user/<%= user.id %>" class="dropdown-item">
-                  <%= avatar_tag user.id, style: "width: 1rem; height: 1rem;" %>
-                <%= user.name %></a></li>
+                <% if !user.created_by_invite? || user.invitation_accepted? %>
+                  <li style="display: flex">
+                    <a href="/user/<%= user.id %>" class="dropdown-item">
+                    <%= avatar_tag user.id, style: "width: 1rem; height: 1rem;" %>
+                  <%= user.name %></a></li>
+                <% end %>
               <% end %>
             </ul>
           </li>

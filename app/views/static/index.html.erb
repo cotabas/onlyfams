@@ -1,17 +1,35 @@
 <div class="container">
+  <h1> Welcome to Onlyfams.photos! </h1>
+  <% unless current_user.nil? %>
   <br />
+  <p>Hello <%= link_to User.find(current_user.id).name, "/user/#{current_user.id}", class: "user_link" %>,
+  I made this website to share photos of our sweet girl Eyrie away from mainstream social media.<br />
+  You can look at all the posts/pictures in chronological order or you can look at individual members page to see just what they've posted.<br />
+  Links to everything are in the menu on the right<br />
+  You can also edit your profile by going to your page then clicking the settings wheel<br />
   <br />
-  <h1> Only Fams! </h1>
-
-  <% if current_user.nil? %>
-    <%= link_to 'Sign in', new_user_session_path %>
-    <br />
-    <br />
+  Please don't post photos from here on other social media. We want to let Eyrie decide what gets put out there about her.<br />
+  Please do use this site to share photos of whatever you like, this is an invite only place for freinds and family, There are no algorithms here pushing content or ads to you.<br />
+  <br />
+  A side note: Eyrie escaped a bit early and I wanted to get this site up and running quickly so there are a few things missing:<br />
+  <ul>
+    <li>
+      You can't edit your comments or posts, so proofread them before you post ( I will fix this fairly soon )
+    </li>
+    <li>
+      The profile pictures can't be sized on the site so you'll have to do it on your own or they might apear a bit stretched
+    </li>
+    <li>
+      Probably other stuff, I'm tired..
+    </li>
+  </ul>
   <% else %>
-    <%= link_to User.find(current_user.id).name, "/user/#{current_user.id}" %>
-    <br />
-    <%= link_to 'Sign out', destroy_user_session_path %>
+    <%= link_to 'Sign in', new_user_session_path, class: "signin_link" %><br />
+    <i>(You have to be signed in to do anything on this site)</i>
+    <br /><br />
+    Check your email for your invitation link to setup your account.<br />
+    If you didn't get an invitation email, text me, or email me at mo@cptmo.dev
   <% end %>
 
-  <%= link_to 'Post', 'posts' %>
+  
 </div>

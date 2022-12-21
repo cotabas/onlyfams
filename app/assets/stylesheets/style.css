@@ -49,14 +49,15 @@ label {
 .setting_wheel {
   text-decoration: none;
 }
-.setting_wheel:hover {
-  opacity: 70%;
+.signin_link {
+  font-size: 2rem;
+  text-decoration: none;
 }
 .user_link {
   text-decoration: none;
   color: #000;
 }
-.user_link:hover {
+.user_link:hover, .setting_wheel:hover, .signin_link:hover {
   opacity: 70%;
 }
 p {
