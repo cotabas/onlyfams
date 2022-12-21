@@ -64,9 +64,10 @@ p {
   margin-bottom: 0;
 }
 .eyrie_face {
-  position: absolute;
-  top: 100px;
-  left: 20px;
+  /* Also used for the current user avatar in the navbar */
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 

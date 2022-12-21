@@ -1,8 +1,23 @@
-<div class="eyrie_face">
-  <%= image_tag "eyrie_face.jpg", width: "200px" %>
-</div>
+
 <div class="container">
-  <h1> Welcome to Onlyfams.photos! </h1>
+  <% unless notice.nil? %>
+  <br />
+  <br />
+    <div class="alert alert-success" role="alert">
+      <p class="notice"><%= notice %></p>
+    </div>
+  <% end %>
+  <% unless alert.nil? %>
+  <br />
+  <br />
+    <div class="alert alert-danger" role="alert">
+      <p class="alert"><%= alert %></p>  
+    </div>
+  <% end %>
+  <div class="eyrie_face">
+    <%= image_tag "eyrie_face.jpg", width: "200px" %>
+    <h1> Welcome to Onlyfams.photos! </h1>
+  </div>
 
   <br />
   <% unless current_user.nil? %>

@@ -23,11 +23,14 @@
 
       <div class="offcanvas-header">
         <div>
-        <% if current_user.nil? %>
+          <% if current_user.nil? %>
             <%= link_to 'Sign in', new_user_session_path, class: "nav-link" %>
           <% else %>
-              <%= link_to User.find(current_user.id).name, "/user/#{current_user.id}", class: "nav-link" %>
-              <%= link_to 'Sign out', destroy_user_session_path, class: "nav-link" %>
+          <div class="eyrie_face">
+            <%= avatar_tag current_user.id, style: "width: 1rem; height: 1rem;" %>
+            <%= link_to User.find(current_user.id).name, "/user/#{current_user.id}", class: "nav-link" %>
+          </div>
+            <%= link_to 'Sign out', destroy_user_session_path, class: "nav-link" %>
           <% end %>
         </div>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
