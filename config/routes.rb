@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'static#index'
   get '/contact', to: 'static#contact'
+  get '/admin', to: 'static#admin'
   
   resources :posts do
     resources :comments
