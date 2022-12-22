@@ -5,7 +5,12 @@ ruby "3.1.2"
 
 gem 'devise'
 gem 'devise_invitable', '~> 2.0.0'
-gem 'fastimage'
+
+gem 'figaro'
+
+gem 'fastimage' 
+
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
