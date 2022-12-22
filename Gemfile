@@ -7,6 +7,7 @@ gem 'devise'
 gem 'devise_invitable', '~> 2.0.0'
 
 gem 'figaro'
+gem "aws-sdk-s3", require: false
 
 gem 'fastimage' 
 
