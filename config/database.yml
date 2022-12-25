@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: onlyfams_production
-  username: onlyfams
+  username: ubuntu 
   password: <%= ENV["ONLYFAMS_DATABASE_PASSWORD"] %>
