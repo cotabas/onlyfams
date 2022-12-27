@@ -3,3 +3,8 @@ yarn add esbuild
 yarn add sass
 
 sudo apt install nodejs
+sudo apt install npm
+
+sudo apt install imagemagick
+
+bin/dev build asset pipeline

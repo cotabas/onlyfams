@@ -8,6 +8,8 @@ gem 'devise_invitable', '~> 2.0.0'
 
 gem 'figaro'
 gem "aws-sdk-s3", require: false
+gem 'image_processing', '~> 1.2'
+
 
 gem 'fastimage' 
 
