@@ -58,7 +58,11 @@ label {
   text-decoration: none;
   color: #000;
 }
-.user_link:hover, .setting_wheel:hover, .signin_link:hover {
+.delete_link {
+  text-decoration: none;
+  color: #dd4545;
+}
+.user_link:hover, .setting_wheel:hover, .signin_link:hover, .delete_link:hover {
   opacity: 70%;
 }
 p {
