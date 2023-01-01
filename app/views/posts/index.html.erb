@@ -10,7 +10,7 @@
   <% @posts.reverse.each do |post| %>
     <a href="<%= "/posts/#{post.id}" %>" data-turbo-frame="main_image">
       <div class="img_back col col-md-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <%= image_tag(post.featured_image) %>   
+          <%= image_tag(post.featured_image.variant(resize_to_limit: [200, 200]).processed) %>   
       </div>
     </a>
   <% end %>
