@@ -11,7 +11,7 @@ class StaticController < ApplicationController
     comment_array = @comments.map { |comment| Event.new(comment.id, comment.user_id, comment.created_at, comment.body, 'comment', comment.post_id) }
 
     @events = post_array + comment_array
-    @events = @events.sort_by { |event| event.time }
+    @events = @events.sort_by { |event| event.time }.reverse
 
     
   end

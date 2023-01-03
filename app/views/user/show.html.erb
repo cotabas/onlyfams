@@ -8,7 +8,7 @@
 <% end %></h2>
 </div>
 <div class="img_container container">
-  <% Post.where(user_id: @user.id).each do |post| %>
+  <% Post.where(user_id: @user.id).reverse.each do |post| %>
     <a href="<%= "/posts/#{post.id}" %>" data-turbo-frame="main_image">
       <div class="img_back col col-md-auto" data-bs-toggle="modal" data-bs-target="#modal">
           <%= image_tag(post.featured_image) %>   

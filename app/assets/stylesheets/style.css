@@ -29,6 +29,7 @@ label {
   grid-template-columns: repeat(auto-fill, min(200px));
   gap: 4px;
   justify-content: center;
+  padding-bottom: 5rem;
 }
 .modal_container {
   display: flex;
