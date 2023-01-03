@@ -1,0 +1,50 @@
+<div class="container">
+
+
+
+
+
+
+
+<turbo-frame id="time_line">
+  <% @events.each do |event| %>
+    <div class="event_container">
+      
+        <% if event.type == 'post' %>
+          <div class="event_head">
+            <%= avatar_tag event.user, style: 'width: 30px; height: 30px;' %>
+            <strong><%= User.find(event.user).name %></strong>
+
+            <%= event.time.strftime("%I:%M %p %m/%d") %>
+            posted:
+          </div>
+          <div class="event_main">
+            <a href="<%= "/posts/#{event.id}" %>" data-turbo-frame="main_image" class="main_link" >
+            <div class="col col-md-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <%= event.content %>
+          
+          </div>
+          </a>
+        <% else %>
+          <div class="event_head">
+            <%= avatar_tag event.user, style: 'width: 30px; height: 30px;' %>
+            <strong><%= User.find(event.user).name %></strong>
+
+            <%= event.time.strftime("%I:%M %p %m/%d") %>
+            commented:
+          </div>
+          <div class="event_main">
+          <a href="<%= "/posts/#{event.post}" %>" data-turbo-frame="main_image" class="main_link" >
+          <div class="col col-md-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          
+          <%= event.content %>
+          </div>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+    
+</turbo-frame>
+
+</div>

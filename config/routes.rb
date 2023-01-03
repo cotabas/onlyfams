@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'static#index'
   get '/contact', to: 'static#contact'
   get '/admin', to: 'static#admin'
+  get '/timeline', to: 'static#timeline'
   
   resources :posts do
     resources :comments

@@ -47,6 +47,18 @@ label {
   gap: 10px;
   margin-bottom: 20px;
 }
+.event_container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.event_main {
+  padding-left: 3rem;
+}
+.event_emp {
+  color: #212529;
+  font-size: 1rem;
+}
 .setting_wheel {
   text-decoration: none;
 }
@@ -56,13 +68,18 @@ label {
 }
 .user_link {
   text-decoration: none;
-  color: #000;
+  color: #212529;
 }
 .delete_link {
   text-decoration: none;
   color: #dd4545;
 }
-.user_link:hover, .setting_wheel:hover, .signin_link:hover, .delete_link:hover {
+.main_link {
+  text-decoration: none;
+  color: #212529;
+
+}
+.user_link:hover, .setting_wheel:hover, .signin_link:hover, .delete_link:hover, .main_link:hover {
   opacity: 70%;
 }
 p {
