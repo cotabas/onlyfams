@@ -60,7 +60,7 @@ class PostsController < ApplicationController
     Comment.destroy_by(post_id: @post.id)
 
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
+      format.html { redirect_to posts_url, turbo: false, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
   end
