@@ -2,10 +2,10 @@
 <div class="container user_container">
 <%= avatar_tag @user.id, style: 'width: 70px; height: 70px;' %>
 
-<h2><strong><%= @user.name %></strong>
+<h2><strong><%= @user.name %></strong></h2>
 <% if current_user == @user %>
-  <%= link_to "&#9881".html_safe, edit_user_registration_url, class: "setting_wheel" %>
-<% end %></h2>
+  <%= link_to image_tag("setting_wheel.svg", height: "30px", width: "30px"), edit_user_registration_url, class: "setting_wheel" %>
+<% end %>
 </div>
 <div class="img_container container">
   <% Post.where(user_id: @user.id).reverse.each do |post| %>

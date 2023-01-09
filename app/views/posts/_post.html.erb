@@ -11,7 +11,7 @@
         <%= "Edited: #{post.updated_at}" %>
       <% end %>
       <% if current_user == @user %>
-        <%= link_to "Delete this post", post, class: "delete_link", data: { "turbo-method": :delete } %>
+        <%= link_to "Delete this post", post, class: "delete_link", data: { turbo_frame: "_top", "turbo-method": :delete } %>
       <% end %>
     </p>
       <p style="padding-left: 35px"><%= post.title %></p>
@@ -30,7 +30,7 @@
           <p style="padding-left: 45px">
             <%= comment.body %>
             <% if current_user.id == comment.user_id %>
-              <a href="/posts/<%= post.id %>/comments/<%= comment.id %>" rel="nofollow" data-turbo-method="delete" class="delete_link">Delete</a>
+              <a href="/posts/<%= post.id %>/comments/<%= comment.id %>" rel="nofollow" data-turbo-frame="_top" data-turbo-method="delete" class="delete_link">Delete</a>
             <% end %>
           </p>
 
