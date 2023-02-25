@@ -9,8 +9,8 @@
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
     "dropzone": "^6.0.0-beta.2",
-    "esbuild": "^0.16.10",
-    "sass": "^1.57.1"
+    "esbuild": "^0.17.10",
+    "sass": "^1.58.3"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
