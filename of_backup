@@ -1,0 +1,1012 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.5 (Ubuntu 14.5-0ubuntu0.22.04.1)
+-- Dumped by pg_dump version 14.5 (Ubuntu 14.5-0ubuntu0.22.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: active_storage_attachments; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.active_storage_attachments (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    record_type character varying NOT NULL,
+    record_id bigint NOT NULL,
+    blob_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_attachments OWNER TO ubuntu;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.active_storage_attachments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_attachments_id_seq OWNER TO ubuntu;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.active_storage_attachments_id_seq OWNED BY public.active_storage_attachments.id;
+
+
+--
+-- Name: active_storage_blobs; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.active_storage_blobs (
+    id bigint NOT NULL,
+    key character varying NOT NULL,
+    filename character varying NOT NULL,
+    content_type character varying,
+    metadata text,
+    service_name character varying NOT NULL,
+    byte_size bigint NOT NULL,
+    checksum character varying,
+    created_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_blobs OWNER TO ubuntu;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.active_storage_blobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_blobs_id_seq OWNER TO ubuntu;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.active_storage_blobs_id_seq OWNED BY public.active_storage_blobs.id;
+
+
+--
+-- Name: active_storage_variant_records; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.active_storage_variant_records (
+    id bigint NOT NULL,
+    blob_id bigint NOT NULL,
+    variation_digest character varying NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_variant_records OWNER TO ubuntu;
+
+--
+-- Name: active_storage_variant_records_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.active_storage_variant_records_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_variant_records_id_seq OWNER TO ubuntu;
+
+--
+-- Name: active_storage_variant_records_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.active_storage_variant_records_id_seq OWNED BY public.active_storage_variant_records.id;
+
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ar_internal_metadata OWNER TO ubuntu;
+
+--
+-- Name: comments; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.comments (
+    id bigint NOT NULL,
+    body text,
+    user_id bigint NOT NULL,
+    post_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.comments OWNER TO ubuntu;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.comments_id_seq OWNER TO ubuntu;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.comments_id_seq OWNED BY public.comments.id;
+
+
+--
+-- Name: posts; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.posts (
+    id bigint NOT NULL,
+    title text,
+    image character varying,
+    user_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+ALTER TABLE public.posts OWNER TO ubuntu;
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.posts_id_seq OWNER TO ubuntu;
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.posts_id_seq OWNED BY public.posts.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO ubuntu;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: ubuntu
+--
+
+CREATE TABLE public.users (
+    id bigint NOT NULL,
+    name character varying,
+    "fam?" boolean,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp(6) without time zone,
+    remember_created_at timestamp(6) without time zone,
+    invitation_token character varying,
+    invitation_created_at timestamp(6) without time zone,
+    invitation_sent_at timestamp(6) without time zone,
+    invitation_accepted_at timestamp(6) without time zone,
+    invitation_limit integer,
+    invited_by_type character varying,
+    invited_by_id bigint,
+    invitations_count integer DEFAULT 0
+);
+
+
+ALTER TABLE public.users OWNER TO ubuntu;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: ubuntu
+--
+
+CREATE SEQUENCE public.users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO ubuntu;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: ubuntu
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: active_storage_attachments id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.active_storage_attachments ALTER COLUMN id SET DEFAULT nextval('public.active_storage_attachments_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_blobs id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval('public.active_storage_blobs_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_variant_records id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.active_storage_variant_records ALTER COLUMN id SET DEFAULT nextval('public.active_storage_variant_records_id_seq'::regclass);
+
+
+--
+-- Name: comments id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.comments ALTER COLUMN id SET DEFAULT nextval('public.comments_id_seq'::regclass);
+
+
+--
+-- Name: posts id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.posts ALTER COLUMN id SET DEFAULT nextval('public.posts_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: active_storage_attachments; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.active_storage_attachments (id, name, record_type, record_id, blob_id, created_at) FROM stdin;
+1	featured_image	Post	1	1	2022-12-25 04:16:07.498168
+2	avatar	User	1	2	2022-12-25 04:19:22.668732
+3	featured_image	Post	2	3	2022-12-25 04:21:18.244319
+4	featured_image	Post	3	4	2022-12-25 04:27:59.995025
+5	featured_image	Post	4	5	2022-12-25 04:31:27.749267
+6	featured_image	Post	5	6	2022-12-25 08:37:25.530116
+7	featured_image	Post	6	7	2022-12-25 08:53:09.757881
+8	featured_image	Post	7	8	2022-12-25 08:53:58.951082
+9	featured_image	Post	8	9	2022-12-25 08:55:33.810509
+10	featured_image	Post	9	10	2022-12-25 08:57:09.671884
+11	featured_image	Post	10	12	2022-12-25 09:01:46.538974
+12	featured_image	Post	11	13	2022-12-25 18:45:52.588505
+13	featured_image	Post	12	14	2022-12-25 18:47:03.846513
+14	featured_image	Post	13	15	2022-12-25 18:48:52.369923
+15	featured_image	Post	14	16	2022-12-25 18:51:30.999959
+16	featured_image	Post	15	17	2022-12-25 18:52:48.005913
+17	featured_image	Post	16	18	2022-12-25 18:55:14.115129
+18	featured_image	Post	17	19	2022-12-25 18:56:21.161634
+19	featured_image	Post	18	20	2022-12-25 18:57:05.06502
+20	featured_image	Post	19	21	2022-12-25 18:57:49.799699
+21	featured_image	Post	20	22	2022-12-25 18:59:16.536452
+22	featured_image	Post	21	23	2022-12-25 19:01:56.579759
+23	featured_image	Post	22	24	2022-12-25 19:03:28.036308
+24	featured_image	Post	23	25	2022-12-25 19:08:27.015897
+25	featured_image	Post	24	26	2022-12-25 19:10:01.560085
+26	featured_image	Post	25	29	2022-12-26 07:41:16.967642
+27	featured_image	Post	26	30	2022-12-26 07:41:56.346977
+28	featured_image	Post	27	31	2022-12-26 07:42:51.90628
+29	image	ActiveStorage::VariantRecord	1	32	2022-12-28 01:40:41.35715
+30	image	ActiveStorage::VariantRecord	3	34	2022-12-28 05:30:57.259679
+31	image	ActiveStorage::VariantRecord	4	35	2022-12-28 05:30:59.369496
+32	image	ActiveStorage::VariantRecord	5	36	2022-12-28 05:31:00.712252
+33	image	ActiveStorage::VariantRecord	6	37	2022-12-28 05:31:00.716262
+34	featured_image	Post	28	38	2022-12-30 19:41:52.28695
+35	featured_image	Post	29	39	2022-12-30 19:42:09.927442
+36	featured_image	Post	30	40	2022-12-30 19:45:14.721308
+37	featured_image	Post	31	41	2022-12-30 19:49:46.802759
+38	featured_image	Post	32	42	2023-01-01 01:52:11.264362
+39	image	ActiveStorage::VariantRecord	7	43	2023-01-01 08:14:40.736981
+40	image	ActiveStorage::VariantRecord	8	44	2023-01-01 08:14:42.251932
+41	image	ActiveStorage::VariantRecord	9	45	2023-01-01 08:14:43.685681
+42	image	ActiveStorage::VariantRecord	10	46	2023-01-01 08:14:44.214561
+43	image	ActiveStorage::VariantRecord	11	47	2023-01-01 08:14:44.693743
+44	image	ActiveStorage::VariantRecord	12	48	2023-01-01 08:14:46.021352
+45	image	ActiveStorage::VariantRecord	13	49	2023-01-01 08:14:47.439595
+46	image	ActiveStorage::VariantRecord	14	50	2023-01-01 08:14:48.716532
+47	image	ActiveStorage::VariantRecord	15	51	2023-01-01 08:14:49.827303
+48	image	ActiveStorage::VariantRecord	16	52	2023-01-01 08:14:51.269944
+49	image	ActiveStorage::VariantRecord	17	53	2023-01-01 08:14:52.677752
+50	image	ActiveStorage::VariantRecord	18	54	2023-01-01 08:14:54.015163
+51	image	ActiveStorage::VariantRecord	19	55	2023-01-01 08:14:55.359262
+52	image	ActiveStorage::VariantRecord	20	56	2023-01-01 08:14:56.653629
+53	image	ActiveStorage::VariantRecord	21	57	2023-01-01 08:14:56.974777
+54	image	ActiveStorage::VariantRecord	22	58	2023-01-01 08:14:57.267627
+55	image	ActiveStorage::VariantRecord	23	59	2023-01-01 08:14:58.51197
+56	image	ActiveStorage::VariantRecord	24	60	2023-01-01 08:15:00.189769
+57	image	ActiveStorage::VariantRecord	25	61	2023-01-01 08:15:01.595812
+58	image	ActiveStorage::VariantRecord	26	62	2023-01-01 08:15:02.932779
+59	image	ActiveStorage::VariantRecord	27	63	2023-01-01 08:15:04.565497
+60	image	ActiveStorage::VariantRecord	28	64	2023-01-01 08:15:04.937478
+61	image	ActiveStorage::VariantRecord	29	65	2023-01-01 08:15:05.699944
+62	image	ActiveStorage::VariantRecord	30	66	2023-01-01 08:15:06.234632
+63	image	ActiveStorage::VariantRecord	31	67	2023-01-01 08:15:06.784674
+64	image	ActiveStorage::VariantRecord	32	68	2023-01-01 08:15:08.099228
+65	image	ActiveStorage::VariantRecord	33	69	2023-01-01 08:15:09.534318
+66	featured_image	Post	33	70	2023-01-01 08:43:55.036214
+67	image	ActiveStorage::VariantRecord	34	71	2023-01-01 08:43:56.668743
+68	featured_image	Post	34	72	2023-01-03 02:25:56.478507
+69	image	ActiveStorage::VariantRecord	35	73	2023-01-03 02:25:58.222896
+70	featured_image	Post	35	74	2023-01-04 04:03:17.029631
+71	image	ActiveStorage::VariantRecord	36	75	2023-01-04 04:03:18.160841
+74	featured_image	Post	38	82	2023-01-04 20:21:20.157065
+75	image	ActiveStorage::VariantRecord	38	83	2023-01-04 20:21:20.730402
+76	featured_image	Post	39	84	2023-01-04 20:21:51.17963
+77	image	ActiveStorage::VariantRecord	39	85	2023-01-04 20:21:51.999526
+78	featured_image	Post	40	86	2023-01-07 21:09:34.949918
+79	image	ActiveStorage::VariantRecord	40	87	2023-01-07 21:09:35.771121
+80	featured_image	Post	41	88	2023-01-07 21:17:59.584169
+81	image	ActiveStorage::VariantRecord	41	89	2023-01-07 21:17:59.99846
+82	featured_image	Post	42	90	2023-01-07 21:20:02.507576
+83	image	ActiveStorage::VariantRecord	42	91	2023-01-07 21:20:03.143326
+84	featured_image	Post	43	92	2023-01-08 02:08:59.61959
+85	image	ActiveStorage::VariantRecord	43	93	2023-01-08 02:09:01.109197
+86	featured_image	Post	44	94	2023-01-09 06:45:46.643322
+87	image	ActiveStorage::VariantRecord	44	95	2023-01-09 06:58:46.400853
+88	featured_image	Post	45	96	2023-01-15 00:43:32.799868
+89	image	ActiveStorage::VariantRecord	45	97	2023-01-15 00:43:34.959063
+90	featured_image	Post	46	98	2023-01-23 17:58:40.777477
+94	featured_image	Post	48	103	2023-01-23 18:00:23.070834
+91	image	ActiveStorage::VariantRecord	46	99	2023-01-23 17:58:42.667674
+92	featured_image	Post	47	100	2023-01-23 17:59:14.072096
+93	image	ActiveStorage::VariantRecord	47	101	2023-01-23 17:59:15.809146
+95	image	ActiveStorage::VariantRecord	48	104	2023-01-23 18:00:24.390085
+96	featured_image	Post	49	105	2023-01-23 18:13:01.362297
+97	image	ActiveStorage::VariantRecord	49	106	2023-01-23 18:13:03.328335
+99	featured_image	Post	51	108	2023-01-27 05:33:47.186051
+131	image	ActiveStorage::VariantRecord	50	140	2023-01-29 05:32:54.764359
+133	featured_image	Post	83	142	2023-02-06 18:12:49.989789
+134	image	ActiveStorage::VariantRecord	52	143	2023-02-06 18:12:52.760066
+135	featured_image	Post	84	144	2023-02-06 18:13:31.742055
+136	image	ActiveStorage::VariantRecord	53	145	2023-02-09 08:44:05.047393
+137	featured_image	Post	85	146	2023-02-09 17:04:51.845744
+138	image	ActiveStorage::VariantRecord	54	147	2023-02-09 17:04:53.080895
+139	featured_image	Post	86	148	2023-02-09 17:05:28.595015
+140	image	ActiveStorage::VariantRecord	55	149	2023-02-09 17:05:30.023255
+143	featured_image	Post	88	152	2023-02-09 17:06:45.138487
+144	image	ActiveStorage::VariantRecord	57	153	2023-02-09 17:06:46.931412
+145	featured_image	Post	89	154	2023-02-09 17:07:47.584304
+146	image	ActiveStorage::VariantRecord	58	155	2023-02-09 17:07:48.24352
+147	featured_image	Post	90	156	2023-02-09 17:08:53.37802
+148	image	ActiveStorage::VariantRecord	59	157	2023-02-09 17:08:54.870621
+151	featured_image	Post	92	160	2023-02-15 20:20:59.032486
+152	image	ActiveStorage::VariantRecord	61	161	2023-02-15 20:21:00.995562
+157	featured_image	Post	95	166	2023-02-15 20:22:59.811048
+158	image	ActiveStorage::VariantRecord	64	167	2023-02-15 20:23:01.488633
+159	featured_image	Post	96	168	2023-02-15 20:23:39.97985
+160	image	ActiveStorage::VariantRecord	65	169	2023-02-15 20:23:41.455992
+161	featured_image	Post	97	170	2023-02-15 20:24:19.708042
+162	image	ActiveStorage::VariantRecord	66	171	2023-02-15 20:24:21.277497
+163	featured_image	Post	98	172	2023-02-22 03:54:23.099897
+\.
+
+
+--
+-- Data for Name: active_storage_blobs; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.active_storage_blobs (id, key, filename, content_type, metadata, service_name, byte_size, checksum, created_at) FROM stdin;
+1	urbul12hpefomfn83dkswi8n42x2	20221218_125738.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3985157	+2mAeoCx6PlZODM/huXWHw==	2022-12-25 04:15:35.524831
+15	y8njydmyx6x2ey2j5890ock0lq5r	94AAB32A-7F81-4949-88A9-6D651F78CFB1.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	121856	7BXL4NCIf9cQRU52AXIOWQ==	2022-12-25 18:47:47.03179
+2	7sgn6jckvpnikku8mk0dfenp1kss	favicon.ico	image/vnd.microsoft.icon	{"identified":true,"analyzed":true}	amazon	41662	XiwByBmq3Q8OlSoNBqN0FA==	2022-12-25 04:19:09.503279
+3	mwa174imr8zvunqa1s96nhf0as6r	20221223_085313.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3010213	SO8D3os12MpCgQOB0gdUYw==	2022-12-25 04:20:39.821772
+32	phyk7ifm2doa9biz6r6e1dceah8m	IMG_20221225_134714.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	44165	PkOaWq/77pQZ46iCFP7nkA==	2022-12-28 01:40:41.340518
+4	askgzsit4b1c1mbec76dspllzxj2	BF7FCA37-9575-4998-853B-7F30E852ECA2.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	1010636	mS6b2204w/eE8TpCGgeSUg==	2022-12-25 04:27:46.012111
+16	843ftz71kh1mairj0e0uf00ivl4m	DFEE653F-B52E-4422-841A-3A1116346B19.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3565648	PyBLaX6fQI3PdwxbNV1ssA==	2022-12-25 18:51:03.574069
+5	crhzb4w1iza31wttunjewmtztcqc	9AC32808-430A-4325-AB81-2A596B90AC20.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	404416	MUvD0VER4B+p6gnMiKmp+A==	2022-12-25 04:31:22.143137
+6	mxf3efax8jfqpm4xhk8pq28gb3sd	20221219_195331.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	1392499	c7epu+A+MYGFGsYA2KrV2A==	2022-12-25 08:36:47.347119
+23	2uhkw012wkxblhhmw2pv202dkxge	CF5623F7-1D68-4CF4-8488-6FEB7E8972D5.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3607879	aSjgneeM7mLE7WFQaVHh9Q==	2022-12-25 19:01:50.016409
+7	ge275ok203cytp3kw9471fc77oss	IMG_20221216_170209.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	379537	WE6dchf2BcLoSPogRwSW5w==	2022-12-25 08:53:00.381943
+17	7ugh7i905q1621hehzry3qo5ucl3	73CE5DD6-9E82-411B-97A3-06DDAA86CC92.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3348731	ebYbeUaW3LGJ1WyJ3fyOUQ==	2022-12-25 18:52:21.044121
+8	77ollj6ieet5xa2s39uqo6b47jcc	20221211_123544.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	5000100	ebeSueqIQs5Bn7txO/PkvA==	2022-12-25 08:53:39.842646
+9	r4g7vjrai975bcg14j4y6w9ki1ni	20221213_145929.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	2832564	c61lRi2mKwHRpoujhUuA2A==	2022-12-25 08:55:22.210968
+10	o4a52pc14zuc1f5xyj9o4gr8psj8	20221212_110416.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3023525	w4D7rWWQy+VzeRg/1ob6XQ==	2022-12-25 08:57:03.52573
+11	qpk8cbxyke4ic7chm1traldu123j	20221206_220617.jpg	image/jpeg	\N	amazon	3195237	Y3NyKfzx/Ux6u5Z1fmJZcw==	2022-12-25 09:00:29.08402
+18	g6xpcdxkg6zyuwvvd031qrn3zplu	831522AB-425E-48DA-B13D-0E3E8F6DB891.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	2899996	W+tdYVPaZ/Q64i5gBqfWJQ==	2022-12-25 18:54:35.139528
+12	m10hy0docs5jd2fmdpa7n7d86p1n	20221208_102133.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	4288136	sEblRu1D6tuecLR5yqagdg==	2022-12-25 09:01:36.300091
+13	tl3hpvydnw89dbsgujobnjvxpv1u	2DCF8E0C-1EEB-4CCD-A888-0DD42CC97427.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3276984	t4OolcvlmWrghQC7/QStmw==	2022-12-25 18:45:38.600773
+29	cs12mn3rpx9zuqsf6gp2s1gq4h5u	20221225_145843.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3782880	jBPPRdRHPBz6FFp0prZi1w==	2022-12-26 07:41:00.327928
+14	3gzc7h657qqj60ra1fwfb3yjgf2a	60A84C88-0654-40E6-97A3-6C969136B0D9.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	114074	9Tk2rG+XNwyWOCDcm3byQg==	2022-12-25 18:46:58.257452
+19	zxznj9c714wlntcqt7caa7fro5ho	D15D0AAD-30DC-424A-91EF-B798D2022956.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3026427	cwzETiuSBgn7gkFgYAYFww==	2022-12-25 18:56:09.790629
+24	9t3z3fw1wurjkfqlgj5ujg50dw69	332267B3-1EE8-4476-AF04-1031FACFF26B.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	118795	E8rXcZi4xtCg+zdOKOZgIQ==	2022-12-25 19:03:19.279431
+20	aivaofyzzu73g2rsj75gtrlxdzpc	C15F7ED8-DA35-42DA-B474-8F6B8AA7A2CD.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3190514	cbrCcFw22M0bvOXcJ16wIw==	2022-12-25 18:56:55.871719
+21	w1m6q72lfftv4csvym1a7f9qe9v1	FE4094FE-CD98-48CC-A5F4-4CFF59C4773C.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	1962205	erXMyfxYKHk4AKbfuCcEVA==	2022-12-25 18:57:32.554395
+22	squ1k5eb3n6gcdt5zcukfqfyxxnu	0065311D-02A2-40D4-A841-F04D2E29269C.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	2943274	LKIZf28PRbibhCg33Y4dZg==	2022-12-25 18:59:06.068086
+25	n4cucl4te640d7ofkhdpdlbyez1j	48F508CE-9D4D-49A8-8E36-277B0319DE3D.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3020092	Xfr2I63RRiKG6eWEeCCvpA==	2022-12-25 19:08:18.051663
+26	98iessbljqj62i1yhh4suhhc2mo0	8760B3E5-E466-4C5F-959E-DDE3E9359300.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	171506	yDTyMCfXO+9gDxXfOLM4eQ==	2022-12-25 19:09:40.098145
+27	bu12gz2r7jxl8qa83er0dlgq0du3	1558FFF3-A4F3-49EB-BE39-75ADDFA8E473.jpeg	image/jpeg	\N	amazon	342482	HrFAuY3LNADbi5v8dTB2lg==	2022-12-26 05:51:45.03619
+28	b6gn7pet4vct0focpobb54b06ryq	20141003_051025_LLS.jpg	image/jpeg	\N	amazon	1666976	ELyi2IXtySg2WdsdsIweXA==	2022-12-26 07:16:07.735385
+30	4q5e888umu3vwp8647nn6yyq10xc	20221225_215732.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	4448140	iU2WM3bE0+eYPPeNSaCn/A==	2022-12-26 07:41:48.167003
+31	vft4zc1ps8e1ypapf0n90zprhwmz	IMG_20221225_134714.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	646663	tHTIJJOqt6zxMgKxOaDz0w==	2022-12-26 07:42:37.065149
+34	je0fbb7kips05ps8d6c34j99rbjh	20221225_215732.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	41402	8tUEnJDRG0H1VO9iCjkL1A==	2022-12-28 05:30:57.257833
+35	70gvhm1dwjt0rmulm5oaypuhv2do	20221225_145843.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	38981	78NWsC2MViEjLUloIhWiyA==	2022-12-28 05:30:59.368527
+36	tqzy7lbax4gx2rl3azl25o2ndalu	332267B3-1EE8-4476-AF04-1031FACFF26B.jpeg	image/jpeg	{"identified":true}	amazon	4646	ynOE4eeC+H3CJpn/3y4xBg==	2022-12-28 05:31:00.701803
+37	irrf0i0subtywawh24j26iv7b733	8760B3E5-E466-4C5F-959E-DDE3E9359300.jpeg	image/jpeg	{"identified":true}	amazon	5661	vexOkINPiUGO2d802G6dnA==	2022-12-28 05:31:00.704787
+38	64pv15q6ig9rom5ct67fz2y3o57e	3025359E-D9A3-4D34-B81E-5B14559CCC91.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	535104	NmKYbV6bG1+C+GAyXW2ZIA==	2022-12-30 19:41:35.326741
+39	064v4agufm36gwrpthlj9cef7o3i	8F3A30B9-621C-4A8B-99C8-C2806CE51DC0.jpeg	image/jpeg	{"identified":true,"analyzed":true}	amazon	530580	lQpa7Rmf69ln5INLiLzEZA==	2022-12-30 19:42:04.947105
+40	1dfbp8w4pim6a1kw6yf8ha7z2h5n	20221229_202955.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3361374	SEwSnEMhxzf858vYqaqMQQ==	2022-12-30 19:45:08.284098
+41	w7wam55i1gd2z2wvya216grlwqmn	20221226_145103.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	3598992	w+NeLQSKWMxH2k8YqLEOMA==	2022-12-30 19:49:37.853532
+58	u5lmlxxwx1wt54kg8fyj9n0mva5f	60A84C88-0654-40E6-97A3-6C969136B0D9.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	5567	Q23cYp4lEGw/+ICfeK+hYA==	2023-01-01 08:14:57.266697
+42	pmloxv6zl2uo50ckh3br63otndgy	IMG_20221231_175131.jpg	image/jpeg	{"identified":true,"analyzed":true}	amazon	685501	rt3shOViRkbA9qKAONkA6g==	2023-01-01 01:52:01.088157
+43	dhm6xsanhsdo15ricfgv5si77nmw	IMG_20221231_175131.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	13688	n78j56Ow9PHsWT59839ObQ==	2023-01-01 08:14:40.735173
+44	mjfb5fd2led3orm1qe3chhdo848c	20221226_145103.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	35361	GmqXeD+kKAo6s42W+JFmjQ==	2023-01-01 08:14:42.250978
+45	1aig398p5prhayg4plj1zskwlxq4	20221229_202955.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	33271	nEzsKdRiwA/HVoUVII+yfg==	2023-01-01 08:14:43.684762
+46	8bzi1usxx48ddqm792zg3dix3umw	8F3A30B9-621C-4A8B-99C8-C2806CE51DC0.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	9367	6IDLFnZBD5MxTGmqAnapNA==	2023-01-01 08:14:44.213598
+47	swwl6kxtipcb3ehzb6nigy57m2sy	3025359E-D9A3-4D34-B81E-5B14559CCC91.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	11787	s3ZhjJBxIFYet6oIRx4rRw==	2023-01-01 08:14:44.69279
+48	jenyxt8cmzu4oh4hc4xm756aw9xi	48F508CE-9D4D-49A8-8E36-277B0319DE3D.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	22689	71ZpPBs6GD9pKb6dWdhv9A==	2023-01-01 08:14:46.020427
+49	d1v6ky3fgd9nexat6qvr738ns2oy	CF5623F7-1D68-4CF4-8488-6FEB7E8972D5.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	28857	J3gKklVKcJWXjR4Wlsw5cw==	2023-01-01 08:14:47.438704
+50	fl2997scq7zvgfhaou7ssbax6dl5	0065311D-02A2-40D4-A841-F04D2E29269C.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	28782	unillok23L7/A0Wvg+XJTw==	2023-01-01 08:14:48.715632
+51	z6a0mulfo5enjpsdterpgte0s6tr	FE4094FE-CD98-48CC-A5F4-4CFF59C4773C.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	28047	/HLEffY9ruEK62sig2xE0w==	2023-01-01 08:14:49.826352
+52	eck7vi97w5hoakpkxdxdyyl8gdnc	C15F7ED8-DA35-42DA-B474-8F6B8AA7A2CD.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	34383	ejYlz8uaOQadzr19ZOD5vg==	2023-01-01 08:14:51.268997
+53	nudn7hlni7fvuupf4olww5pyjbml	D15D0AAD-30DC-424A-91EF-B798D2022956.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	35605	CgUzIFPcCSwwREjIBGjdNA==	2023-01-01 08:14:52.676814
+54	2m1te41wfn5qqvy9qja19cd6gwy6	831522AB-425E-48DA-B13D-0E3E8F6DB891.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	28028	FU/Nxl53WkFetvhKoGGDfg==	2023-01-01 08:14:54.014164
+55	nweum6yr59lwu6yw20u9lrzeneor	73CE5DD6-9E82-411B-97A3-06DDAA86CC92.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	21355	zQCyOfyVTNbUsQYdXmuL4Q==	2023-01-01 08:14:55.358314
+56	x2een17b0e0u2wg9s4zfavgcljil	DFEE653F-B52E-4422-841A-3A1116346B19.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	28923	90/J3cTm4yxFWgHOvPuNCg==	2023-01-01 08:14:56.652632
+57	hgr7s9r5tp5ms35bpkipnrhecaw4	94AAB32A-7F81-4949-88A9-6D651F78CFB1.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	7949	OW7/iYgmPfSW6Dq1YjOz0g==	2023-01-01 08:14:56.973783
+59	9c747mpld4fie5py9uraydhv4n8n	2DCF8E0C-1EEB-4CCD-A888-0DD42CC97427.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	28894	eJ6r9Xyt77LkF2SGVFPJsg==	2023-01-01 08:14:58.511119
+60	qp0g3cyncmwiahzk2m10tm0ic2za	20221208_102133.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	28121	jIn4nhXFzXIoVAU6ZaHeew==	2023-01-01 08:15:00.188792
+61	lqq5chei5l08sdqsutp82k374c6z	20221212_110416.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	34216	bOMEPpcKD9giRCNvXzgCog==	2023-01-01 08:15:01.594768
+62	z64wk7cu23ua104i7o2zs9j5h17p	20221213_145929.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	34077	yYDI1pBSBXDkTl1oGIsX/w==	2023-01-01 08:15:02.931862
+63	8u9lsbaenvdi7a0q6ur7katcgsp8	20221211_123544.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	41682	bxOqXVkCB9y+LfcmxXWXZw==	2023-01-01 08:15:04.564568
+64	b92k3ocmrckmnskcfrnwa4cytj8r	IMG_20221216_170209.jpg	image/jpeg	{"identified":true,"width":161,"height":200,"analyzed":true}	amazon	15965	90PItiXeIJDiOo2lIxeT4w==	2023-01-01 08:15:04.936571
+65	oyy5323ajr2vzjf313p67eda7rp4	20221219_195331.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	57901	q2lM6kwuf3nwFiglpsFQWg==	2023-01-01 08:15:05.699003
+66	ov9bd5w2dtycjiyj49m8v4lv11m1	9AC32808-430A-4325-AB81-2A596B90AC20.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	10121	Wn9cQ9kTCwwbaXN4wrVVNw==	2023-01-01 08:15:06.233682
+67	aa2z44ibz42cml7peek9trd31muw	BF7FCA37-9575-4998-853B-7F30E852ECA2.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	13324	itagqR2XMmYBIO7aAo0pfA==	2023-01-01 08:15:06.783702
+68	ps9ctkddrhag97db7ps437c7wskg	20221223_085313.jpg	image/jpeg	{"identified":true,"width":200,"height":150,"analyzed":true}	amazon	30492	n591sDJatPivAtme1iJ4rw==	2023-01-01 08:15:08.098287
+69	qmknd8g7n5urnr78qomfkxzxkw3h	20221218_125738.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	46295	Ogv7+9taMAzQ962HRcm1Ig==	2023-01-01 08:15:09.533382
+71	gn7epdr8a3u5oybeon1nad8gfkd1	C3F77CDC-FFFA-4F6E-882F-18564E4D61C8.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	32587	+CsJhDcQzpTRO6Bl82R/+A==	2023-01-01 08:43:56.667775
+70	f2pa74zgxnkitg263etjraf2bbut	C3F77CDC-FFFA-4F6E-882F-18564E4D61C8.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	3062752	OvEWF71CGIY8BjjUSPffgQ==	2023-01-01 08:43:21.007918
+72	ajxlpwt8ieawh3xctqy30ac6t8ac	A222E5DF-5067-4FB4-B812-1B748FB19E36.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	3021102	Lc9pjWmgcQA/Mt+W+gFpXA==	2023-01-03 02:25:43.650597
+73	ro8ge8xogm86s3jjt1vcs3m070xy	A222E5DF-5067-4FB4-B812-1B748FB19E36.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	29340	iXv0wseeeHGiDLfxu9/swg==	2023-01-03 02:25:58.221792
+74	6moakytca8as1tt5n09qqdrs4mxa	4DF963CA-F727-48DE-BA29-5EBFF455F059.png	image/png	{"identified":true,"width":1242,"height":2688,"analyzed":true}	amazon	3942286	XxUN8NIJW4amHMq3Y/oiJg==	2023-01-04 04:03:02.36794
+75	90p4emxh0qlsil2igtby6ztwpb2b	4DF963CA-F727-48DE-BA29-5EBFF455F059.png	image/png	{"identified":true,"width":92,"height":200,"analyzed":true}	amazon	82771	umHBI0yqLQ/18ImffsLIlw==	2023-01-04 04:03:18.159813
+76	g13dlinvsfoon7xuuzbmj2vg06is	eyrie_face.jpg	image/jpeg	\N	amazon	552006	hQLq/nZwJs62+Y6jmVIvKg==	2023-01-04 04:15:43.405845
+77	q2q4ku0l8ean5owayfiecpixl636	eyrie_round_face.jpg	image/jpeg	\N	amazon	998378	2HaxkzGx4p9lZMy/s8cS1Q==	2023-01-04 04:20:48.26238
+78	pp7q82989g6ixtzu8g99mn0sgulb	20221217_210337.jpg	image/jpeg	\N	amazon	3266453	aYeEqqY8SxZ3uhOJnT8B3w==	2023-01-04 04:21:09.691875
+79	kst4bdjqr2sm8wlgitafdfjrf0j0	eyrie_round_face.jpg	image/jpeg	\N	amazon	998378	2HaxkzGx4p9lZMy/s8cS1Q==	2023-01-04 04:22:19.999259
+93	0n64gf26gtjiiv5lzgayiyz064eo	0F90B415-E180-4FFC-BE30-4CBE61DEE238.jpeg	image/jpeg	{"identified":true,"width":200,"height":150,"analyzed":true}	amazon	29891	uVSvKvHE3r9yANjHbPBIrA==	2023-01-08 02:09:01.108182
+94	ualpp0a9zzohcbrjsw7i21j5729w	20230104_150424.jpg	image/jpeg	{"identified":true}	amazon	3967653	RtaJxWl61oDW87hchDQLkw==	2023-01-09 06:45:19.075566
+82	o6srli4azmofyz2a8ksguq0fqxng	3F5BB958-A1D6-4526-B0CE-8FFA93B91F2E.jpeg	image/jpeg	{"identified":true,"width":1536,"height":2048,"analyzed":true}	amazon	318675	v2dJLgdaeSkbSB9a5oxwJQ==	2023-01-04 20:21:01.749805
+83	wjqyvvvt2chyfa3f9oc5zgqkx77n	3F5BB958-A1D6-4526-B0CE-8FFA93B91F2E.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	7851	YZQN+PXuThuhbvGkUgi9wg==	2023-01-04 20:21:20.729441
+84	cgey8yjqa948hystzg647e5e3t1p	613D26C3-1290-4B2C-B54E-34EDFE8A1C76.jpeg	image/jpeg	{"identified":true,"width":1536,"height":2048,"analyzed":true}	amazon	956533	riPmkcT/ovYlVT/OMY3EBA==	2023-01-04 20:21:34.737778
+85	kt1zliccg38hwydl72kr0ss3fv7n	613D26C3-1290-4B2C-B54E-34EDFE8A1C76.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	10143	9lMtQ75y9ANYsZ9sUy1mdg==	2023-01-04 20:21:51.998359
+95	3tcdcelzfjgusnzaq4gdoabo2rsb	20230104_150424.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	47587	xQVDClwLG0o4CUQ/m8apEg==	2023-01-09 06:58:46.397302
+86	ed6j1ll7j186fe2d8sbe7kdbioe2	Eyrie and Morgan 1-4-23.jpg	image/jpeg	{"identified":true,"width":1536,"height":2048,"analyzed":true}	amazon	1466952	auGxuPOY4v021P6XySNVtQ==	2023-01-07 21:08:44.761127
+87	ohyl1e9352fqtg5y0auxmnpiw6a1	Eyrie and Morgan 1-4-23.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	19958	sCgtSNIvQQjmXvPhBiFH0w==	2023-01-07 21:09:35.770065
+88	hfe0hwuk4d0rtrj1xk8vjj2l1kfy	Eyrie Red Dots 12-23-22.jpg	image/jpeg	{"identified":true,"width":1157,"height":1795,"analyzed":true}	amazon	334916	SWPCRg1OD/oeRk3Bc8o1uA==	2023-01-07 21:16:46.636246
+89	e19l3gavzh837xhar98room922do	Eyrie Red Dots 12-23-22.jpg	image/jpeg	{"identified":true,"width":129,"height":200,"analyzed":true}	amazon	18282	25LCBgwJOXUNoNbv7+t90Q==	2023-01-07 21:17:59.997281
+101	l8t3qurgnu7n1yzuyu4bbywqz0t4	84BD4B34-243D-4133-AAF7-254F2390F8F1.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	31889	A6RscHsDTYcJB7q5+oo2uw==	2023-01-23 17:59:15.808086
+90	vf8gda1x5t1i390gj5qrhagdhooz	Willa Red Dots 12-23-22.jpg	image/jpeg	{"identified":true,"width":2040,"height":1536,"analyzed":true}	amazon	436628	nKJg7QgWtSbDnl5X/KEVxA==	2023-01-07 21:18:24.81954
+91	zsufsdm521vru0rw82jxsmi31cqy	Willa Red Dots 12-23-22.jpg	image/jpeg	{"identified":true,"width":200,"height":151,"analyzed":true}	amazon	13859	26cQqT4NvlymYMj/QQJkEg==	2023-01-07 21:20:03.142392
+96	u7jihijwhesc24mbbagpur17x4yf	20230114_123002.jpg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	5185429	udYsmOidYTE6C14YAqur1Q==	2023-01-15 00:43:06.307473
+92	fc1gi1ycjzpog4yurnltsb8aokm6	0F90B415-E180-4FFC-BE30-4CBE61DEE238.jpeg	image/jpeg	{"identified":true,"width":4032,"height":3024,"analyzed":true}	amazon	2272783	MA9JEPLM29GStZjtNc06nA==	2023-01-08 02:08:49.664253
+97	apnuvdqmzfiey69tmjtxobh7r28r	20230114_123002.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	49620	14haFBEjhWEHQbirXgS1uA==	2023-01-15 00:43:34.957969
+102	t037we3x9ojg7axkwis48lh2m1bk	B1E02D1E-E9B7-4F7A-85A0-F2619D9FA23B.jpeg	image/jpeg	\N	amazon	4161156	hc/xysxPKNktNw6i/coBvQ==	2023-01-23 17:59:48.69632
+98	ceclq545o3z6er9x66g84wdf304x	5FC950C2-1324-4A36-A40A-2447B828B457.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	3250798	E375VFLW8vpLqJNUyFEO/A==	2023-01-23 17:58:17.657304
+99	skdo8wit9x7m74xc6jckzvbzreen	5FC950C2-1324-4A36-A40A-2447B828B457.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	29911	VBSI9cs4u1mkgGVdQyJm1Q==	2023-01-23 17:58:42.66654
+100	xytfpfujgejqyiqxlydccfavpxru	84BD4B34-243D-4133-AAF7-254F2390F8F1.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	2923510	nuIZ6wdjqdjwJq1nlhVeCQ==	2023-01-23 17:59:08.020669
+103	efinl5yqshoik55pbfhramoe1kaz	5745B3A1-6E3B-4487-8348-CE727D50CEE6.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	2155608	YopYOz3tblyY0fXnDvnrYQ==	2023-01-23 18:00:14.563521
+104	zks7qpl5xojhpoc96hhru6d7hctd	5745B3A1-6E3B-4487-8348-CE727D50CEE6.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	26058	cCff4KqjsR2IlO0oFAdQNA==	2023-01-23 18:00:24.389177
+106	yezv8mywx449pdxjmqsuuh3qrwuc	20230122_112324.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	34082	pwLFrDGFHqYgFsorn0SKxg==	2023-01-23 18:13:03.32741
+105	55spy20wcbgwvik96bzklahy9xxz	20230122_112324.jpg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	3203631	oTIOmeYzm58KLwxpUpXImw==	2023-01-23 18:12:52.85517
+108	7pqws0pxtydwst3r1fq2087464at	C96246CE-C072-4A8E-94A7-4473B9067B4C.jpeg	image/jpeg	{"identified":true}	amazon	2675645	jN/IEJcqNyxKEGAQ0Tx9kw==	2023-01-27 05:33:28.286334
+140	l24l66h9xiwd6g7xviftclxx8jyj	C96246CE-C072-4A8E-94A7-4473B9067B4C.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	28396	25H+rZwveH4/eM7zXiNYIg==	2023-01-29 05:32:54.76118
+142	bgqlq1yd55ivvr047m4ex6f38sr5	20230201_171355.jpg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	3720331	720Vq0SPUex8Rhq8b2h6fA==	2023-02-06 18:12:33.486095
+143	7s07kc7xononcbstlbmn62qxvhaj	20230201_171355.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	31449	FAHENyPyJWRViuiOatT55A==	2023-02-06 18:12:52.758353
+144	wxwberzsejqbwkku2xmymyc4l1xn	20230126_173315.jpg	image/jpeg	{"identified":true}	amazon	3559542	wn393bQSzN6OVzBlPB4WEA==	2023-02-06 18:13:24.678769
+145	o47f0tt3w5azzfpcey0kmvfulh4i	20230126_173315.jpg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	32783	jFc5PHfbKy5SYakzpdHDzg==	2023-02-09 08:44:05.044575
+146	1082kwm79uel9aedyc3vl0efycos	9DBEAA4D-F503-41B8-941D-CE9199C37B3B.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	1681935	NvsO24RYmMzs3Bv8gsJxcw==	2023-02-09 17:04:42.076443
+147	1arboq9ibhy6e8zebgoa8jhdc55o	9DBEAA4D-F503-41B8-941D-CE9199C37B3B.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	30419	k9W6yxlDB9B+XECNdZS46A==	2023-02-09 17:04:53.079982
+167	p48vuqjut9vlgh418913n261okzd	36701780-9CA0-429D-9261-4F3559D6379B.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	28650	E+oNRNPVSIed3+CfA9hGNQ==	2023-02-15 20:23:01.487528
+148	m1ks69c1wh15dp4oozvvvempz97w	FEAF806C-0003-4B54-A5C0-8BB9D7CBB750.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	1672003	d1k1AJBY3cZAXbNheYsJ/w==	2023-02-09 17:05:20.654631
+149	shrd4f6zn5vqnclv4m3ulin6q2pj	FEAF806C-0003-4B54-A5C0-8BB9D7CBB750.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	30311	9OnNwgEnBu4R4tCnPXRR4w==	2023-02-09 17:05:30.021914
+160	zqg0evrzlf86e1bwkwi89ppq8nyy	9F7E445A-DB73-45EE-AD5A-A81403678D3E.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	4742559	vgg8f4hCFVX5tWkMBtY40Q==	2023-02-15 20:20:45.650264
+152	op1hz0f5sigm6m9iujosht9pkbse	250F4BE8-57E7-48E5-80AA-C6103715065D.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	3772690	pmtM4ShqceTJtGtBEN7IRw==	2023-02-09 17:06:28.657404
+153	xqy4nzc5xavce487y0kuwjhowil9	250F4BE8-57E7-48E5-80AA-C6103715065D.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	32129	8MG6HW806MNe8Jvv0hdefA==	2023-02-09 17:06:46.929409
+161	ddethpd3vf97goviwjawwid4k76j	9F7E445A-DB73-45EE-AD5A-A81403678D3E.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	32819	226qq4J3FcAN5Vr0Gj8dCQ==	2023-02-15 20:21:00.993793
+154	ycmt5g3dt7o2n1cvdfq4p6dcxzaq	56228DD8-7C0D-49FE-A9D2-DD8DD08F7AF8.jpeg	image/jpeg	{"identified":true,"width":1785,"height":2188,"analyzed":true}	amazon	1026872	XYmypFC2rtO/ckWHa5kopg==	2023-02-09 17:07:29.897772
+155	93rxtzjv4nqynp99yk7u1tearwd6	56228DD8-7C0D-49FE-A9D2-DD8DD08F7AF8.jpeg	image/jpeg	{"identified":true,"width":163,"height":200,"analyzed":true}	amazon	35074	OpT0CZGM7MT5/sgfRqYo4A==	2023-02-09 17:07:48.242543
+156	3eigdh6d38zjjlm4q8upw1a6q38u	B46496F8-0288-434B-A873-249C4CFA7B73.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	2817573	a7NZTfc0fcR+w7/v1xumVQ==	2023-02-09 17:08:33.226764
+157	wun9wltbkdlo5lloegas8xcjv39t	B46496F8-0288-434B-A873-249C4CFA7B73.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	24772	vbmhLWCMcTXbhAMmSZ6+hg==	2023-02-09 17:08:54.869699
+168	8vd5ddjzkfips056vacopx18fag1	EBBD5578-74C6-487A-B127-2D14ABF89609.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	3205418	H7Kmlu8TQjFSm1p1e8fQDw==	2023-02-15 20:23:20.941712
+169	yae9wdx8g5dp2m9txxf6qdmndfin	EBBD5578-74C6-487A-B127-2D14ABF89609.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	28008	L0WzCp5oWiGvvxisTZ+EDQ==	2023-02-15 20:23:41.455083
+170	koy5hp2cb8oxc0mt5r1zexdtuop9	FA955FD3-90B0-48D5-BD1E-EE84093FB464.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	3140633	x1z0pUouRxWpA4yggi69gw==	2023-02-15 20:23:55.017504
+166	k03aj6cfnhzhy36i9jsk3ga2rjgo	36701780-9CA0-429D-9261-4F3559D6379B.jpeg	image/jpeg	{"identified":true,"width":3024,"height":4032,"analyzed":true}	amazon	2679077	VCe54p/Ran/f6KPOUqf7FQ==	2023-02-15 20:22:43.493868
+171	b1xv5gc6uwcuyfg69m7gsagtyxev	FA955FD3-90B0-48D5-BD1E-EE84093FB464.jpeg	image/jpeg	{"identified":true,"width":150,"height":200,"analyzed":true}	amazon	28841	4h1rvM+qF9Gtpu6hJPK2fg==	2023-02-15 20:24:21.27663
+172	vqmneevw1wa9wmhjecolocymiyoq	20230213_092828.jpg	image/jpeg	{"identified":true}	amazon	4526675	R2LeEzsbauPq/rxoi1iZqw==	2023-02-22 03:54:12.527665
+\.
+
+
+--
+-- Data for Name: active_storage_variant_records; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.active_storage_variant_records (id, blob_id, variation_digest) FROM stdin;
+1	31	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+3	30	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+4	29	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+5	24	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+6	26	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+7	42	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+8	41	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+9	40	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+10	39	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+11	38	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+12	25	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+13	23	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+14	22	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+15	21	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+16	20	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+17	19	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+18	18	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+19	17	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+20	16	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+21	15	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+22	14	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+23	13	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+24	12	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+25	10	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+26	9	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+27	8	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+28	7	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+29	6	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+30	5	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+31	4	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+32	3	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+33	1	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+34	70	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+35	72	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+36	74	AA1hMxeHtZHx9jhAS20K7zXw2cQ=
+38	82	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+39	84	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+40	86	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+41	88	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+42	90	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+43	92	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+44	94	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+45	96	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+46	98	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+47	100	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+48	103	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+49	105	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+50	108	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+52	142	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+53	144	6x8KFtM/8O22vFlQ4EVqBuGjN8Q=
+54	146	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+55	148	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+57	152	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+58	154	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+59	156	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+61	160	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+64	166	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+65	168	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+66	170	vrA3GLlzlwMjSEe6cE8VrJKWxds=
+\.
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	production	2022-12-25 03:10:03.800206	2022-12-25 03:10:03.800206
+\.
+
+
+--
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.comments (id, body, user_id, post_id, created_at, updated_at) FROM stdin;
+1	Glamour shot! 	2	1	2022-12-25 04:28:58.45742	2022-12-25 04:28:58.45742
+2	oh! it's magic	1	4	2022-12-25 04:45:03.339872	2022-12-25 04:45:03.339872
+3	Dupli-kate	1	28	2023-01-01 03:17:21.96068	2023-01-01 03:17:21.96068
+4	😍	2	25	2023-01-01 08:37:14.888049	2023-01-01 08:37:14.888049
+5	Little Eyrie- our Christmas girl!	6	27	2023-01-04 04:03:08.056299	2023-01-04 04:03:08.056299
+6	She's so long!	1	42	2023-01-07 22:13:04.109614	2023-01-07 22:13:04.109614
+7	Matching twin onsies!	2	42	2023-01-08 02:09:41.9237	2023-01-08 02:09:41.9237
+8	😍	2	30	2023-01-09 06:44:40.079179	2023-01-09 06:44:40.079179
+\.
+
+
+--
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.posts (id, title, image, user_id, created_at, updated_at) FROM stdin;
+1	Eyrie thinking deeply in her festive suit	\N	1	2022-12-25 04:16:07.486381	2022-12-25 04:16:07.499492
+2	Eyrie's big beautiful eyez	\N	1	2022-12-25 04:21:18.239087	2022-12-25 04:21:18.245202
+3	Little Bear takes a nap	\N	2	2022-12-25 04:27:59.988943	2022-12-25 04:27:59.996228
+4	Oh!	\N	2	2022-12-25 04:31:27.744443	2022-12-25 04:31:27.750103
+5	Mother and daughter <3	\N	1	2022-12-25 08:37:25.524926	2022-12-25 08:37:25.530989
+6	Happy Christmas!	\N	1	2022-12-25 08:53:09.752485	2022-12-25 08:53:09.758907
+7	First bath 	\N	1	2022-12-25 08:53:58.945721	2022-12-25 08:53:58.951995
+8	Look at that back carpet 	\N	1	2022-12-25 08:55:33.805718	2022-12-25 08:55:33.811326
+9	Traveling 	\N	1	2022-12-25 08:57:09.667365	2022-12-25 08:57:09.672821
+10	So tiny	\N	1	2022-12-25 09:01:46.534215	2022-12-25 09:01:46.539763
+11	Prudence inspects her new roommate 	\N	2	2022-12-25 18:45:52.582692	2022-12-25 18:45:52.589454
+12	First bath!	\N	2	2022-12-25 18:47:03.84128	2022-12-25 18:47:03.847394
+13	Baby blanket by GFGM Judy-O!	\N	2	2022-12-25 18:48:52.365238	2022-12-25 18:48:52.370681
+14	Sleeper girl	\N	2	2022-12-25 18:51:30.994843	2022-12-25 18:51:31.000833
+15	Snuggle time	\N	2	2022-12-25 18:52:48.000704	2022-12-25 18:52:48.006736
+16	❤️	\N	2	2022-12-25 18:55:14.110384	2022-12-25 18:55:14.11597
+17	Dame time!	\N	2	2022-12-25 18:56:21.156945	2022-12-25 18:56:21.162466
+18	❤️	\N	2	2022-12-25 18:57:05.060069	2022-12-25 18:57:05.065853
+19	😻	\N	2	2022-12-25 18:57:49.794807	2022-12-25 18:57:49.800466
+20	❤️	\N	2	2022-12-25 18:59:16.531574	2022-12-25 18:59:16.537248
+21	❤️	\N	2	2022-12-25 19:01:56.574829	2022-12-25 19:01:56.580541
+22	Heading home	\N	2	2022-12-25 19:03:28.031442	2022-12-25 19:03:28.037102
+23	First night	\N	2	2022-12-25 19:08:27.011269	2022-12-25 19:08:27.016702
+24	Baby Persimmon heading home	\N	2	2022-12-25 19:10:01.555808	2022-12-25 19:10:01.56111
+25	Bundle	\N	1	2022-12-26 07:41:16.960564	2022-12-26 07:41:16.968707
+26	With a hat	\N	1	2022-12-26 07:41:56.342204	2022-12-26 07:41:56.347784
+27	It's Christmas!	\N	1	2022-12-26 07:42:51.901133	2022-12-26 07:42:51.907111
+28	Holiday rose swaddle set	\N	2	2022-12-30 19:41:52.277248	2022-12-30 19:41:52.290401
+29	❤️	\N	2	2022-12-30 19:42:09.922736	2022-12-30 19:42:09.928251
+30	Clean bean	\N	1	2022-12-30 19:45:14.716224	2022-12-30 19:45:14.72242
+31	Top heavy	\N	1	2022-12-30 19:49:46.796751	2022-12-30 19:49:46.803649
+32	Covered in cats and kids	\N	1	2023-01-01 01:52:11.257486	2023-01-01 01:52:11.265593
+33	😴	\N	2	2023-01-01 08:43:55.029696	2023-01-01 08:43:55.037295
+34	First Bjorn	\N	2	2023-01-03 02:25:56.471918	2023-01-03 02:25:56.47951
+35	Prudence peeping on Eyrie	\N	2	2023-01-04 04:03:17.02327	2023-01-04 04:03:17.030986
+38	😮	\N	2	2023-01-04 20:21:20.150567	2023-01-04 20:21:20.158069
+39	In her Snuggle Me pillow :)	\N	2	2023-01-04 20:21:51.174026	2023-01-04 20:21:51.180522
+40	One Month!	\N	3	2023-01-07 21:09:34.94239	2023-01-07 21:09:34.951021
+41	Red Dot Girls!	\N	3	2023-01-07 21:17:59.578652	2023-01-07 21:17:59.585083
+42	Little Cousins Red Dots - Same Day 12-23-22	\N	3	2023-01-07 21:20:02.501739	2023-01-07 21:20:02.508523
+43	Deep sleep	\N	2	2023-01-08 02:08:59.613657	2023-01-08 02:08:59.620531
+44	Esby and Eyrie 	\N	1	2023-01-09 06:45:46.635851	2023-01-09 06:45:46.644286
+45	Auntie Chelsea!	\N	1	2023-01-15 00:43:32.786744	2023-01-15 00:43:32.800948
+46	Nesting Doll Baby 	\N	2	2023-01-23 17:58:40.770888	2023-01-23 17:58:40.778605
+47	Uncle Q	\N	2	2023-01-23 17:59:14.062507	2023-01-23 17:59:14.072907
+48	❤️	\N	2	2023-01-23 18:00:23.065909	2023-01-23 18:00:23.071657
+49	laughing lady	\N	1	2023-01-23 18:13:01.355685	2023-01-23 18:13:01.363325
+51	Grumplestilzkin	\N	2	2023-01-27 05:33:47.180624	2023-01-27 05:33:47.186976
+83	Filling out that bear suit 🐻	\N	1	2023-02-06 18:12:49.981374	2023-02-06 18:12:49.990818
+84	Happy girl	\N	1	2023-02-06 18:13:31.734852	2023-02-06 18:13:31.742948
+85	😏	\N	2	2023-02-09 17:04:51.839872	2023-02-09 17:04:51.846674
+86	😘	\N	2	2023-02-09 17:05:28.589605	2023-02-09 17:05:28.595872
+88	❤️	\N	2	2023-02-09 17:06:45.133405	2023-02-09 17:06:45.139309
+89	Meeting Great Aunt T	\N	2	2023-02-09 17:07:47.579462	2023-02-09 17:07:47.585042
+90	🙌	\N	2	2023-02-09 17:08:53.373148	2023-02-09 17:08:53.378771
+92	Baby ballerina	\N	2	2023-02-15 20:20:59.027734	2023-02-15 20:20:59.033372
+95	😛	\N	2	2023-02-15 20:22:59.805849	2023-02-15 20:22:59.811857
+96	😄	\N	2	2023-02-15 20:23:39.975115	2023-02-15 20:23:39.980562
+97	🙂	\N	2	2023-02-15 20:24:19.703364	2023-02-15 20:24:19.708784
+98	Happy	\N	1	2023-02-22 03:54:23.093203	2023-02-22 03:54:23.10087
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.schema_migrations (version) FROM stdin;
+20221104132620
+20221104133458
+20221104134605
+20221104135643
+20221105151604
+20221215062606
+20221220061837
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: ubuntu
+--
+
+COPY public.users (id, name, "fam?", created_at, updated_at, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, invitation_token, invitation_created_at, invitation_sent_at, invitation_accepted_at, invitation_limit, invited_by_type, invited_by_id, invitations_count) FROM stdin;
+1	Morgan	\N	2022-12-25 04:15:13.582943	2022-12-25 08:35:53.24486	cotabas@gmail.com	$2a$12$TZU2GhflhBC9gEaDHGzlI.JwHlfztgndl31d/VBJug.QvpTX89QK2	\N	\N	2022-12-25 08:35:53.242915	\N	\N	\N	\N	\N	\N	\N	0
+5	\N	\N	2022-12-25 23:49:38.35431	2022-12-25 23:49:38.35431	brandon.d.kramer@gmail.com	$2a$12$0fd4w7LMdJGBIUJU.ZTph.phdIiJRwx3UVzbdjsQRyLxz6fEK7SM.	\N	\N	\N	d9e28509604afee5ec86ff105a6a2c8e6c907e390adc2103ac7d0b35d873e4e8	2022-12-25 23:49:38.35397	2022-12-25 23:49:38.35397	\N	\N	User	1	0
+3	Esby	\N	2022-12-25 22:29:32.562	2022-12-27 10:19:36.112304	sigridbrett@gmail.com	$2a$12$s3MsEtKpLo3Ce3.HIq7X1O8SrisVqB9uQ0XQpmlR14wS3bdVYjwgi	\N	\N	2022-12-27 10:19:36.111463	\N	2022-12-25 22:29:32.561633	2022-12-25 22:29:32.561633	2022-12-26 07:31:37.038541	\N	User	1	0
+4	Chelsea	\N	2022-12-25 23:49:03.467705	2023-01-03 02:50:06.05056	muselfri7@yahoo.com	$2a$12$D7oHfNd/ny7HP82QsRHae.5b0fn9AtCK8KFs6WhlveruADZxRceL6	\N	\N	2023-01-03 02:50:06.050012	\N	2022-12-25 23:49:03.467291	2022-12-25 23:49:03.467291	2022-12-26 05:47:53.839341	\N	User	1	0
+7	Jim Gilsdorf	\N	2023-01-04 03:54:07.577141	2023-01-04 03:56:40.989171	jimmygee918@yahoo.com	$2a$12$ZyI80uQx2.EZY64mlz35ROcQTXj0AKXVKlPyH/CdeBnmQUKL7o0yC	\N	\N	\N	\N	2023-01-04 03:54:07.576788	2023-01-04 03:54:07.576788	2023-01-04 03:56:40.988396	\N	User	2	0
+8	\N	\N	2023-01-04 03:57:44.911037	2023-01-04 03:57:44.911037	quinngilsdorf@yahoo.com	$2a$12$LD5LTsX7HNz2Yx5pp6mzne2GI15SNIgxeBNN93xx9gTWBLoEUKa2.	\N	\N	\N	9fb85b0d4a0f6ee5acd8fcfcaf039dc321a01ab846611c8668bff881b31b84d2	2023-01-04 03:57:44.910711	2023-01-04 03:57:44.910711	\N	\N	User	2	0
+6	Rebekahjane	\N	2023-01-04 03:52:27.06927	2023-01-04 04:01:26.915136	rebekahalbert501@yahoo.com	$2a$12$cPxaFSe9I43atuY7HzANeesXviwXvGmjkl9a3PSC4KNOK2TkspR.q	\N	\N	\N	\N	2023-01-04 03:52:27.068619	2023-01-04 03:52:27.068619	2023-01-04 04:01:26.914636	\N	User	2	0
+2	Kate	\N	2022-12-25 04:16:46.956477	2023-01-27 05:34:12.699529	katherinelhufford@gmail.com	$2a$12$BDnhKija4JvsUggxzmTZCeqrdCtJmm0grxCqwmh75LdGSsMRSHaxK	\N	\N	\N	\N	2022-12-25 04:16:46.956084	2022-12-25 04:16:46.956084	2022-12-25 04:26:43.003327	\N	User	1	0
+\.
+
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.active_storage_attachments_id_seq', 195, true);
+
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.active_storage_blobs_id_seq', 204, true);
+
+
+--
+-- Name: active_storage_variant_records_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.active_storage_variant_records_id_seq', 66, true);
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.comments_id_seq', 8, true);
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.posts_id_seq', 130, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: ubuntu
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 8, true);
+
+
+--
+-- Name: active_storage_attachments active_storage_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT active_storage_attachments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_blobs active_storage_blobs_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.active_storage_blobs
+    ADD CONSTRAINT active_storage_blobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_variant_records active_storage_variant_records_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.active_storage_variant_records
+    ADD CONSTRAINT active_storage_variant_records_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: posts posts_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.posts
+    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_active_storage_attachments_on_blob_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_active_storage_attachments_on_blob_id ON public.active_storage_attachments USING btree (blob_id);
+
+
+--
+-- Name: index_active_storage_attachments_uniqueness; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE UNIQUE INDEX index_active_storage_attachments_uniqueness ON public.active_storage_attachments USING btree (record_type, record_id, name, blob_id);
+
+
+--
+-- Name: index_active_storage_blobs_on_key; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_blobs USING btree (key);
+
+
+--
+-- Name: index_active_storage_variant_records_uniqueness; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE UNIQUE INDEX index_active_storage_variant_records_uniqueness ON public.active_storage_variant_records USING btree (blob_id, variation_digest);
+
+
+--
+-- Name: index_comments_on_post_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_comments_on_post_id ON public.comments USING btree (post_id);
+
+
+--
+-- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_comments_on_user_id ON public.comments USING btree (user_id);
+
+
+--
+-- Name: index_posts_on_user_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_posts_on_user_id ON public.posts USING btree (user_id);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
+
+
+--
+-- Name: index_users_on_invitation_token; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE UNIQUE INDEX index_users_on_invitation_token ON public.users USING btree (invitation_token);
+
+
+--
+-- Name: index_users_on_invited_by; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_users_on_invited_by ON public.users USING btree (invited_by_type, invited_by_id);
+
+
+--
+-- Name: index_users_on_invited_by_id; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE INDEX index_users_on_invited_by_id ON public.users USING btree (invited_by_id);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: ubuntu
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING btree (reset_password_token);
+
+
+--
+-- Name: comments fk_rails_03de2dc08c; Type: FK CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT fk_rails_03de2dc08c FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: comments fk_rails_2fd19c0db7; Type: FK CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT fk_rails_2fd19c0db7 FOREIGN KEY (post_id) REFERENCES public.posts(id);
+
+
+--
+-- Name: posts fk_rails_5b5ddfd518; Type: FK CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.posts
+    ADD CONSTRAINT fk_rails_5b5ddfd518 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: active_storage_variant_records fk_rails_993965df05; Type: FK CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.active_storage_variant_records
+    ADD CONSTRAINT fk_rails_993965df05 FOREIGN KEY (blob_id) REFERENCES public.active_storage_blobs(id);
+
+
+--
+-- Name: active_storage_attachments fk_rails_c3b3935057; Type: FK CONSTRAINT; Schema: public; Owner: ubuntu
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT fk_rails_c3b3935057 FOREIGN KEY (blob_id) REFERENCES public.active_storage_blobs(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
