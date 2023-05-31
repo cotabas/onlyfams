@@ -32,12 +32,13 @@ image sharing site for my family to be able to share photos with each other with
 
    * For **bash**:
      
-     configure `~/.bashrc`:
+     configure then source`~/.bashrc`:
      ```bash
      echo 'eval "$(~/.rbenv/bin/rbenv init - bash)"' >> ~/.bashrc
+     . ~/.bashrc
      ```
 
-3. Restart shell then install ruby-build
+3. Install ruby-build
 
     ```bash
     git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
